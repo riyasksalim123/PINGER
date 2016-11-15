@@ -1,9 +1,7 @@
-/// <reference path="../pages/my-page/my-page.ts" />
-import { Component, ViewChild } from '@angular/core';
 
+import { Component, ViewChild } from '@angular/core';
 import { Events, MenuController, Nav, Platform } from 'ionic-angular';
 import { Splashscreen, StatusBar } from 'ionic-native';
-
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';

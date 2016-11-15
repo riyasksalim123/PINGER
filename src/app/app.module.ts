@@ -1,11 +1,8 @@
-/// <reference path="../pages/my-page/my-page.ts" />
-import { NgModule } from '@angular/core';
 
+import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
 import { ConferenceApp } from './app.component';
-
 import { AboutPage } from '../pages/about/about';
 import { PopoverPage } from '../pages/about-popover/about-popover';
 import { AccountPage } from '../pages/account/account';
@@ -40,8 +37,8 @@ import { Backendservice } from '../providers/backendservice';
     SpeakerDetailPage,
     SpeakerListPage,
     TabsPage,
-      TutorialPage,
-      MyPagePage
+    TutorialPage,
+    MyPagePage
   ],
   imports: [
     IonicModule.forRoot(ConferenceApp)
@@ -61,8 +58,8 @@ import { Backendservice } from '../providers/backendservice';
     SpeakerDetailPage,
     SpeakerListPage,
     TabsPage,
-      TutorialPage,
-      MyPagePage
+    TutorialPage,
+    MyPagePage
   ],
   providers: [ConferenceData, UserData, Storage, Backendservice]
 })
