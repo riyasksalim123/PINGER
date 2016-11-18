@@ -20,6 +20,8 @@ import { MyPagePage} from '../pages/my-page/my-page';
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 import { Backendservice } from '../providers/backendservice';
+import {Facebook} from 'ionic-native';
+
 
 
 @NgModule({
@@ -61,6 +63,6 @@ import { Backendservice } from '../providers/backendservice';
     TutorialPage,
     MyPagePage
   ],
-  providers: [ConferenceData, UserData, Storage, Backendservice]
+  providers: [ConferenceData, UserData, Storage, Backendservice,Facebook]
 })
 export class AppModule {}
