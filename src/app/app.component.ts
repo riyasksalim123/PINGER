@@ -11,6 +11,7 @@ import { MyPagePage} from '../pages/my-page/my-page';
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 import { Backendservice } from '../providers/backendservice';
+//import {GoogleplaceDirective} from '../directives/googleplace.directive';
 
 export interface PageInterface {
   title: string;
@@ -21,7 +22,7 @@ export interface PageInterface {
 }
 
 @Component({
-  templateUrl: 'app.template.html'
+    templateUrl: 'app.template.html'
 })
 export class ConferenceApp {
   // the root nav is a child of the root app component

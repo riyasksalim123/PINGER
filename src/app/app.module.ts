@@ -20,7 +20,7 @@ import { MyPagePage} from '../pages/my-page/my-page';
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 import { Backendservice } from '../providers/backendservice';
-import {Facebook} from 'ionic-native';
+import { MapAutoCompleatePage } from '../pages/map-auto-compleate/map-auto-compleate';
 
 
 
@@ -40,7 +40,9 @@ import {Facebook} from 'ionic-native';
     SpeakerListPage,
     TabsPage,
     TutorialPage,
-    MyPagePage
+    MyPagePage,
+      MapAutoCompleatePage
+      
   ],
   imports: [
     IonicModule.forRoot(ConferenceApp)
@@ -61,8 +63,10 @@ import {Facebook} from 'ionic-native';
     SpeakerListPage,
     TabsPage,
     TutorialPage,
-    MyPagePage
+    MyPagePage,
+      MapAutoCompleatePage
+      
   ],
-  providers: [ConferenceData, UserData, Storage, Backendservice,Facebook]
+  providers: [ConferenceData, UserData, Storage, Backendservice]
 })
 export class AppModule {}

@@ -1,25 +1,26 @@
 
-import { ModalController, LoadingController } from 'ionic-angular';
+import { ModalController, LoadingController, AlertController } from 'ionic-angular';
 import { MapPage } from '../map/map';
+import { MapAutoCompleatePage } from '../map-auto-compleate/map-auto-compleate';
 import { TutorialPage } from '../tutorial/tutorial';
 import { Geolocation, TextToSpeech } from 'ionic-native';
-import { Component } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { Component} from '@angular/core';
+import { NavController, Platform, PageTransition} from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { Backendservice } from '../../providers/backendservice';
 import lodash  from 'lodash';
 import {CordovaOauth, Google, Facebook} from 'ng2-cordova-oauth/core';
 import { Storage } from '@ionic/storage';
 
-//import mongodb from 'mongodb';
 
 declare var window;
+declare var google: any;
 
 declare var FB;
+
 @Component({
     selector: 'page-my-page',
     templateUrl: 'my-page.html'
-   
 })
 
 
@@ -30,7 +31,7 @@ export class MyPagePage {
     params: any;
     access_token: any;
     sucess: any;
-
+    public address: Object;
     private cordovaOauth: CordovaOauth = new CordovaOauth();
     private facebookProvider: Facebook = new Facebook({
         clientId: "1788613404753710",
@@ -43,7 +44,7 @@ export class MyPagePage {
         private toastCtrl: ToastController,
         public backend: Backendservice,
         public modalCtrl: ModalController,
-        public loadingCtrl: LoadingController, public platform: Platform, public storage: Storage) {
+        public loadingCtrl: LoadingController,  public platform: Platform, public storage: Storage, public alertsController: AlertController) {
 
 
 
@@ -53,14 +54,12 @@ export class MyPagePage {
 
     ionViewDidLoad() {
 
-        //this.backend.load('../assets/data/data.json').then(mapData => {
-        //    this.data = mapData;
-
-        //});
-
-        //this.backend.loadclarifyservice('https://upload.wikimedia.org/wikipedia/en/c/c0/Wayanad_Urban_Bus.jpg').then(mapdata => {
-        //   // alert(JSON.stringify(mapdata))
-        //});
+      
+        
+        this.backend.loadclarifyservice('https://scontent.xx.fbcdn.net/t31.0-8/10623590_789178044458631_3709053615946113160_o.jpg').then(mapdata => {
+             alert(JSON.stringify(mapdata))
+         
+        });
 
     }
     public showSnackbar(message?: string) {
@@ -75,10 +74,16 @@ export class MyPagePage {
 
     }
     public redirecttomap() {
-        let modal = this.modalCtrl.create(MapPage);
+        let modal = this.modalCtrl.create(MapAutoCompleatePage);
         modal.present();
     }
-  
+    getAddress(place: Object) {
+        this.address = place['formatted_address'];
+        var location = place['geometry']['location'];
+        var lat = location.lat();
+        var lng = location.lng();
+        console.log("Address Object", place);
+    }
     public goToOtherPage() {
         this.navCtrl.push(TutorialPage);
     }
@@ -121,20 +126,21 @@ export class MyPagePage {
     login() {
 
 
-        this.googlefunction();
-        //Facebook.login(['email']).then((res => {
-
-        //    alert(JSON.stringify(res));
-
-        //})).catch((reason: any) => alert(JSON.stringify(reason)));
-      
-
+        this.facebookauth();
+       
     }
 
     getloginstatus() {
+
+        
+    
+    }
+
+    public getfbresults() {
+        let fields = "id,name,gender,location,website,picture,relationship_status,photos";
         let accestocken1 = "EAAZAavAKhfy4BABiLOELPXBeZA4dZCZA3iwXHGPigkAOb9fV3v1agMzQ3qVXXxeJ4zrd4f7rivScsRAdb0Hz63mYHZBc1XYJxaPOZCuQEGz4Tbt1w22eBaodieXckxlRNt9U1FzSMasxs5D4wAADkbdF6nB1P8JVrYfeHOkQsyYQZDZD";
-        let accestocke2 = "EAAZAavAKhfy4BAH4ZCmgbZAl7gV74cl4z3xYZBx8Dd56GwXoF9o995FMRX72CQa1QzrZBmB9ADmGtptzLL6xyP95hCFS6QDBEtfBOhUtWOv0V6DFgZALPRZCvyshzVq0FZALFZCaZAE1Cui44ZB81Tk33vM7RYg28grDfeaubWMXZAKXLQZDZD";
-        let query = "https://graph.facebook.com/me?access_token=" + accestocke2 +"&fields=id,name,gender,location,website,picture,relationship_status,photos"
+        let accestocke2 = "EAAZAavAKhfy4BAHfaGtiJhJK05J7kFHeZBtAKtoeLeCnR1jSZAQfN2wndUzhJcXnfOZCYpRGIY6HBmaC5h6uzJ7eNOsZC1cGAojc61V7ALtlO28P6Mt0Ws01gHaBTvnvCcEdBZCAvN2b5m5Oe0i7JpS7ZCMUTHCuUPlQAZB1ZAmfOgQZDZD";
+        let query = "https://graph.facebook.com/me?access_token=" + accestocke2 + "&fields=" + fields + "";
         this.backend.load(query).then(mapData => {
             this.data = mapData;
 
@@ -142,8 +148,21 @@ export class MyPagePage {
             alert(JSON.stringify(mapData));
 
         });
+        
+    }
 
-      
+
+    public testdoc() {
+        let modal = this.modalCtrl.create(MapAutoCompleatePage);
+        modal.present();
+    }
+
+    public opengoogleauto() {
+
+        let modal = this.modalCtrl.create(MapPage);
+        modal.present();
+    }
+
 
         //this.storage.get('tocken').then((name) => {
         //    console.log('tocken: ' + name);
@@ -163,11 +182,8 @@ export class MyPagePage {
         //});
 
 
-     
-    
-    }
 
-    public googlefunction() {
+    public facebookauth() {
 
         this.cordovaOauth = new CordovaOauth();
         this.platform.ready().then(() => {
@@ -175,6 +191,7 @@ export class MyPagePage {
              
                 this.data = success;
                 this.tocken = this.data.access_token;
+                alert(this.tocken);
 
 
                 this.storage.set('tocken', this.tocken).then(() => {
@@ -195,3 +212,4 @@ export class MyPagePage {
    
     }
 }
+

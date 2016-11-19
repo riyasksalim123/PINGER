@@ -1,0 +1,26 @@
+<style>
+    .ion-modal {
+     position: absolute;
+    top: 50px !important;
+    left: 79px !important;
+    display: block;
+    width: 70% !important;
+    height: 70% !important;
+}
+</style>
+<ion-header>
+    <ion-navbar>
+        <ion-title>Popovers</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="dismiss()">
+                <ion-icon name="md-close-circle"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div padding>
+        <button ion-button (click)="onSignup(signupForm)" type="submit" block color="primary">Create</button>
+    </div>
+</ion-content>

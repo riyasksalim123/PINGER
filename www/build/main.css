@@ -21183,6 +21183,24 @@ page-map #map.show-map {
   opacity: 1;
 }
 
+page-map-auto-compleate .ion-modal {
+  position: absolute;
+  top: 50px;
+  left: 79px;
+  display: block;
+  width: 70%;
+  height: 70%;
+}
+
+.ion-modal {
+  position: absolute;
+  top: 50px;
+  left: 79px;
+  display: block;
+  width: 70%;
+  height: 70%;
+}
+
 page-my-page h1 {
   color: #fff;
   text-shadow: 0 1px 0px #000;
@@ -21279,7 +21297,7 @@ p {
 ==================================*/
 .app-icon {
   background-color: #fff;
-  background: url("http://bestanimations.com/Earth&Space/Earth/earthglobeanimation/globe-earth-animation-6.gif") center;
+  background: url("../../../www/assets/img/globe-earth-animation-6.gif") center;
   background-size: cover;
   border-radius: 50%;
   height: 125px;

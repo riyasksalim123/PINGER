@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injectable} from '@angular/core';
 import { ModalController, LoadingController } from 'ionic-angular';
 import { ConferenceData } from '../../providers/conference-data';
 
@@ -8,6 +8,8 @@ declare var google: any;
   selector: 'page-map',
   templateUrl: 'map.html'
 })
+
+
 export class MapPage {
     constructor(public confData: ConferenceData, public modalCtrl: ModalController) {}
 
@@ -44,7 +46,7 @@ export class MapPage {
   }
 
   public dismiss() {
-      
 
+     // this.modalCtrl.dismiss();
   }
 }

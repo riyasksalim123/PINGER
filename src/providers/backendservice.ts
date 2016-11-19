@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the Backendservice provider.
+//  Generated class for the Backendservice provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
+//  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+//  for more info on providers and Angular 2 DI.
+//*/
 
 declare var Clarifai;
 @Injectable()
@@ -15,13 +14,17 @@ declare var Clarifai;
 export class Backendservice {
     data: any;
     clarify_obj: any;
+    page: any;
     constructor(public http: Http)
     {
         console.log('Hello Backendservice Provider');
-        this.loadclarify();
+        // this.loadclarify();
+     
+
     }
 
-    load(url: string,config?:any) {
+    load(url: string, config?: any) {
+        this.data = null;
       if (this.data) {
           // already loaded data
           return Promise.resolve(this.data);
@@ -66,5 +69,36 @@ export class Backendservice {
                 resolve(this.data);
             });
         });
+    }
+
+
+    public loadpopup() {
+        alert("dfgbvfd");
+        //let alert = this.alertsController.create({
+        //    title: 'Destroy World',
+        //    message: 'Are you sure?',
+        //    buttons: [{
+        //        text: 'Cancel',
+        //        role: 'cancel',
+        //        handler: () => {
+        //            console.log('CANCEL');
+        //        }
+        //    }, {
+        //            text: 'OK',
+        //            handler: () => {
+        //                console.log('OK');
+        //                this.page.redirecttomap();
+        //                //let nestedAlert = this.alertsController.create({
+        //                //    title: 'Destroy World',
+        //                //    message: 'Now destroying world. Please stand by.',
+        //                //    buttons: ['OK']
+        //                //});
+        //                //nestedAlert.present();
+        //                return false;
+        //            }
+        //        }]
+        //});
+        //alert.present();
+
     }
 }
