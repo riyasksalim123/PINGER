@@ -1,16 +1,16 @@
 
-import { ModalController, LoadingController, AlertController } from 'ionic-angular';
+import { ModalController, ToastController, LoadingController, AlertController, NavController, Platform, PageTransition } from 'ionic-angular';
 import { MapPage } from '../map/map';
+import { TabsPage } from '../tabs/tabs';
 import { MapAutoCompleatePage } from '../map-auto-compleate/map-auto-compleate';
 import { TutorialPage } from '../tutorial/tutorial';
-import { Geolocation, TextToSpeech } from 'ionic-native';
+import { Geolocation, TextToSpeech, PinDialog } from 'ionic-native';
 import { Component} from '@angular/core';
-import { NavController, Platform, PageTransition} from 'ionic-angular';
-import { ToastController } from 'ionic-angular';
 import { Backendservice } from '../../providers/backendservice';
 import lodash  from 'lodash';
 import {CordovaOauth, Google, Facebook} from 'ng2-cordova-oauth/core';
 import { Storage } from '@ionic/storage';
+import { ButtonchoosePage } from '../buttonchoose/buttonchoose';
 
 
 declare var window;
@@ -37,29 +37,26 @@ export class MyPagePage {
         clientId: "1788613404753710",
         appScope: ["email", "read_stream", "user_website", "user_location", "user_relationships"]
     })
-   
-
     public facebook;
     constructor(public navCtrl: NavController,
         private toastCtrl: ToastController,
         public backend: Backendservice,
         public modalCtrl: ModalController,
-        public loadingCtrl: LoadingController,  public platform: Platform, public storage: Storage, public alertsController: AlertController) {
+        public loadingCtrl: LoadingController,
+        public platform: Platform,
+        public storage: Storage,
+        public alertsController: AlertController)
+    {
 
-
-
-
-        
     }
 
     ionViewDidLoad() {
-
-      
-        
-        this.backend.loadclarifyservice('https://scontent.xx.fbcdn.net/t31.0-8/10623590_789178044458631_3709053615946113160_o.jpg').then(mapdata => {
-             alert(JSON.stringify(mapdata))
+        //this.backend.loadclarifyservice('https://scontent.xx.fbcdn.net/t31.0-8/10623590_789178044458631_3709053615946113160_o.jpg').then(mapdata => {
+        //     alert(JSON.stringify(mapdata))
          
-        });
+        //});
+
+
 
     }
     public showSnackbar(message?: string) {
@@ -129,13 +126,6 @@ export class MyPagePage {
         this.facebookauth();
        
     }
-
-    getloginstatus() {
-
-        
-    
-    }
-
     public getfbresults() {
         let fields = "id,name,gender,location,website,picture,relationship_status,photos";
         let accestocken1 = "EAAZAavAKhfy4BABiLOELPXBeZA4dZCZA3iwXHGPigkAOb9fV3v1agMzQ3qVXXxeJ4zrd4f7rivScsRAdb0Hz63mYHZBc1XYJxaPOZCuQEGz4Tbt1w22eBaodieXckxlRNt9U1FzSMasxs5D4wAADkbdF6nB1P8JVrYfeHOkQsyYQZDZD";
@@ -150,39 +140,15 @@ export class MyPagePage {
         });
         
     }
-
-
     public testdoc() {
         let modal = this.modalCtrl.create(MapAutoCompleatePage);
         modal.present();
     }
-
     public opengoogleauto() {
 
         let modal = this.modalCtrl.create(MapPage);
         modal.present();
     }
-
-
-        //this.storage.get('tocken').then((name) => {
-        //    console.log('tocken: ' + name);
-        //    let config = {
-
-        //        params: {
-        //            access_token: name, fields: "id,name,gender,location,website,picture,relationship_status", format: "json"
-
-        //        }
-        //    }
-        //    this.backend.load("https://graph.facebook.com/v2.2/me").then(mapData => {
-        //        this.data = mapData;
-        //        alert(JSON.stringify(mapData));
-
-        //    });
-
-        //});
-
-
-
     public facebookauth() {
 
         this.cordovaOauth = new CordovaOauth();
@@ -211,5 +177,17 @@ export class MyPagePage {
         });
    
     }
+    public redirecttofb() {
+        //PinDialog.prompt('Enter your PIN', 'Verify PIN', ['OK', 'Cancel'])
+        //    .then(
+        //    (result: any) => {
+        //        if (result.buttonIndex == 1) console.log('User clicked OK, value is: ', result.input1);
+        //        else if (result.buttonIndex == 2) console.log('User cancelled');
+        //    }
+        //    );
+        let modal = this.modalCtrl.create(ButtonchoosePage);
+        modal.present();
+        
+    };
 }
 

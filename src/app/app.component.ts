@@ -11,6 +11,7 @@ import { MyPagePage} from '../pages/my-page/my-page';
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 import { Backendservice } from '../providers/backendservice';
+
 //import {GoogleplaceDirective} from '../directives/googleplace.directive';
 
 export interface PageInterface {

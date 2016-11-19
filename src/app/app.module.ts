@@ -21,7 +21,7 @@ import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 import { Backendservice } from '../providers/backendservice';
 import { MapAutoCompleatePage } from '../pages/map-auto-compleate/map-auto-compleate';
-
+import { ButtonchoosePage } from '../pages/buttonchoose/buttonchoose';
 
 
 @NgModule({
@@ -41,8 +41,8 @@ import { MapAutoCompleatePage } from '../pages/map-auto-compleate/map-auto-compl
     TabsPage,
     TutorialPage,
     MyPagePage,
-      MapAutoCompleatePage
-      
+      MapAutoCompleatePage,
+      ButtonchoosePage
   ],
   imports: [
     IonicModule.forRoot(ConferenceApp)
@@ -64,8 +64,8 @@ import { MapAutoCompleatePage } from '../pages/map-auto-compleate/map-auto-compl
     TabsPage,
     TutorialPage,
     MyPagePage,
-      MapAutoCompleatePage
-      
+      MapAutoCompleatePage,
+      ButtonchoosePage
   ],
   providers: [ConferenceData, UserData, Storage, Backendservice]
 })

@@ -1,0 +1,57 @@
+<ion-header align-title="centre">
+    <ion-navbar>
+        <!--<button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>-->
+        <ion-title>Choose City</ion-title>
+        <!--<ion-buttons end>
+            <button ion-button icon-only (click)="presentPopover($event)">
+                <ion-icon name="more"></ion-icon>
+            </button>
+        </ion-buttons>-->
+    </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color:black">
+    <div class="about-header">
+        <img src="assets/img/ionic-logo-white.svg">
+    </div>
+    <div padding class="about-info" style="background-color:black" *ngIf="islocationchoosen">
+       
+        <ion-list no-lines>
+            <ion-item style="background-color:black">
+                <button ion-button full large (click)="location('current')">CURRENT LOCATION</button>
+               
+            </ion-item>
+            <ion-item style="background-color:black">
+              
+                <button ion-button full large (click)="location('manual')">MANUAL LOCATION</button>
+            </ion-item>
+          
+        </ion-list>
+
+    </div>
+    <div padding class="about-info" style="background-color:black" *ngIf="!islocationchoosen">
+
+        <ion-list no-lines>
+            <ion-item style="background-color:black">
+                <ion-card>
+                    <img src="assets/img/ionic-logo-white.svg" />
+                    <ion-card-content>
+                        <ion-card-title>
+                            Nine Inch Nails Live
+                        </ion-card-title>
+                        <p class=“label”>From</p>
+                        <input (focus)="clearFrom()" id="journey_from" name="journey_from" type="text" placeholder="Enter location" [(ngModel)]="fromValue">
+                        <p class="label">To</p>
+                        <input (focus)="clearTo()" id="journey_to" name="journey_to" type="text" placeholder="Enter location" [(ngModel)]="toValue">
+                    
+                    </ion-card-content>
+                </ion-card>
+
+            </ion-item>
+         
+        </ion-list>
+
+    </div>
+</ion-content>
