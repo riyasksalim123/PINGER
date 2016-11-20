@@ -7,6 +7,9 @@
     width: 70% !important;
     height: 70% !important;
 }
+     .sebm-google-map-container {
+      height: 300px;
+    }
 </style>
 <ion-header>
     <ion-navbar>
@@ -21,6 +24,18 @@
 
 <ion-content>
     <div padding>
-        <button ion-button (click)="onSignup(signupForm)" type="submit" block color="primary">Create</button>
+        <div class="container">
+            <ion-item>
+                <ion-label floating>Password</ion-label>
+                <ion-input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search [formControl]="searchControl"></ion-input>
+            </ion-item>
+            <!--<div class="form-group">
+                <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+
+            </div>-->
+            <sebm-google-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+                <sebm-google-map-marker [latitude]="latitude" [longitude]="longitude"></sebm-google-map-marker>
+            </sebm-google-map>
+        </div>
     </div>
 </ion-content>

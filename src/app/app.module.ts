@@ -22,7 +22,7 @@ import { UserData } from '../providers/user-data';
 import { Backendservice } from '../providers/backendservice';
 import { MapAutoCompleatePage } from '../pages/map-auto-compleate/map-auto-compleate';
 import { ButtonchoosePage } from '../pages/buttonchoose/buttonchoose';
-
+import { AgmCoreModule } from "angular2-google-maps/core";
 
 @NgModule({
   declarations: [
@@ -45,6 +45,10 @@ import { ButtonchoosePage } from '../pages/buttonchoose/buttonchoose';
       ButtonchoosePage
   ],
   imports: [
+      AgmCoreModule.forRoot({
+          apiKey: "AIzaSyBjNB7E2ezO5WxgAuaV4R7lOJKA9KhU3QM",
+          libraries: ["places"]
+      }),
     IonicModule.forRoot(ConferenceApp)
   ],
   bootstrap: [IonicApp],
