@@ -46,7 +46,7 @@ export class MapAutoCompleatePage implements OnInit {
     public searchControl: FormControl;
     public zoom: number;
     public decition: string;
-
+    public title: string;
     @ViewChild("search")
     public searchElementRef: ElementRef;
 
@@ -55,6 +55,14 @@ export class MapAutoCompleatePage implements OnInit {
     constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public view: ViewController, private mapsAPILoader: MapsAPILoader) {
 
         this.decition = this.navParams.data;
+
+        if (this.decition == "current") {
+            this.title = "Your current location";
+
+        }
+        else {
+            this.title = "Please select the manual location";
+        }
         //alert(this.decition);
     }
 
