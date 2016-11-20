@@ -1,0 +1,174 @@
+﻿// 20161120212053
+// https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=9.9767303,76.29740219999996&radius=500&type=park&key=AIzaSyBmbRGUuc0yB4vKbxsW8BUr4hZ546opppM
+
+{
+  "html_attributions": [
+    
+  ],
+  "results": [
+    {
+      "geometry": {
+        "location": {
+          "lat": 9.976863099999999,
+          "lng": 76.2938911
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 9.976912749999999,
+            "lng": 76.29409764999998
+          },
+          "southwest": {
+            "lat": 9.976846550000001,
+            "lng": 76.29382225000001
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+      "id": "2fd817abdcc2af526c3af4e8a5f23666c9ccf2d9",
+      "name": "Cochin Corporation Park & Ground Gandhi Nagar",
+      "photos": [
+        {
+          "height": 1932,
+          "html_attributions": [
+            "<a href=\"https://maps.google.com/maps/contrib/107927749213322061844/photos\">biju k</a>"
+          ],
+          "photo_reference": "CoQBdwAAAI-Q7F2AMGiWsMf14Ea210-PNj-wPj1sTOUsmrdi6Cq5UUfKfSPpzDGKk6UdUjg0jg-TMHvK3_Yd-iktvp_UlaUaDrBYi_haKD9kwB_OVxXz7lbHEuG2adheyXTr9PdyDO53t-UrHmLf2-kRnYgCtCi-XIj-ncU2az0W3lBr-VMIEhAWIki6_nfu-DFGC9e5Viq4GhSvMq8kGOYkDTKTVOWWMy21aEGqgQ",
+          "width": 2576
+        }
+      ],
+      "place_id": "ChIJmaSqfkoNCDsRuFtwwJXe3PI",
+      "reference": "CmRSAAAAf1NZiAfjjbWOg1sIPOaTklYHX5vZy9bmGUmAKZ03BINw3EL0ayJjTsb3lZwXEfQw8mL1lOV2dSUO0yzwMUJjgbryydzjL053MEpXeSWioRU6wCyN0uTOyVXE0go3PPfDEhA37x4qQO5yQwMoiU1gm82JGhS4JGZ876jK7iVlt9PzZeBfiR-Egw",
+      "scope": "GOOGLE",
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "Gandhinagar Ground Road, Gandhi Nagar, Kadavanthra, Kochi"
+    },
+    {
+      "geometry": {
+        "location": {
+          "lat": 9.973369499999999,
+          "lng": 76.295366
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 9.973420699999998,
+            "lng": 76.29544584999999
+          },
+          "southwest": {
+            "lat": 9.973215899999998,
+            "lng": 76.29512645
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+      "id": "515caf5bde7e0fc5a05d678aba3bbff484b5e454",
+      "name": "Girinagar North Park",
+      "place_id": "ChIJ2zbRtspyCDsRRlASjND_PhU",
+      "reference": "CmRRAAAAH81OTUzWWBcwSxn5MMIv4JmDKDa1ymZ3FhXHyDOPpM8Ork3T_lRg2jbSRpuhkSJBWVvqCexvrEcRb54O8Z9hTxiWnCf6UXu9wxTaGkluK49Nw6nr2bG2XZaWII_uAnBOEhBTDJ7M0GSQ6D5Xi4W8nB9EGhRvJRDNjKkzqIFXli4H3qU6S5DfJQ",
+      "scope": "GOOGLE",
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "HIG Avenue, Near Fire Station, Jawahar Nagar, Kadavanthra, Kochi"
+    },
+    {
+      "geometry": {
+        "location": {
+          "lat": 9.9757262,
+          "lng": 76.29619620000001
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 9.975964599999999,
+            "lng": 76.2964628
+          },
+          "southwest": {
+            "lat": 9.975445599999999,
+            "lng": 76.29594899999999
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+      "id": "c0853f6dc6f4373e0b6c129176f30bdcc2766e35",
+      "name": "GCDA Ground",
+      "place_id": "ChIJw00aETUNCDsRX7i5cg7sasI",
+      "reference": "CmRbAAAAQYJkZFZ-ttCoKHfOkJBbmwFyps4fRUo62SSxR1bpLUh4Ia0PokB7yKydDBuVsj5HfLYaTrP2EXk2vbo2ktLCbdtRorriRXclXPQvSs2OH6pYYAZMIxBEscyJM3RrMUvMEhAYcRv7-lWzMNCs1rowN63FGhTjSxOUcH8kJw88CyKW-asG42-43Q",
+      "scope": "GOOGLE",
+      "types": [
+        "park",
+        "premise",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "Gandhi Nagar"
+    },
+    {
+      "geometry": {
+        "location": {
+          "lat": 9.973978499999998,
+          "lng": 76.3003133
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 9.974205099999999,
+            "lng": 76.3006243
+          },
+          "southwest": {
+            "lat": 9.9737414,
+            "lng": 76.30004579999999
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+      "id": "9aad383591de4478908db89c5aae67093f39e7bc",
+      "name": "Jawahar Nagar North Park",
+      "place_id": "ChIJCSFqq8xyCDsRzLIMHxq4UV4",
+      "reference": "CmRbAAAA1igzsFsY-Qx49SVzLxXVJzGFYBbMaAI-4YhXZOBAs14wS364nwma-hU1S9rnE1bzGU-n6mkgZN_fiGwBEtPZf2EEmn2eTnPx3P2ottKVO-ckygxKXLJ1AjIkyB5wD6XnEhCo36z28rX4DjiG1AH6FGyNGhTXHrbVaZ8LjdW8hycxpIYFQ0CUiQ",
+      "scope": "GOOGLE",
+      "types": [
+        "park",
+        "premise",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "Jawahar Nagar"
+    },
+    {
+      "geometry": {
+        "location": {
+          "lat": 9.978947099999999,
+          "lng": 76.29366250000001
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 9.979153199999999,
+            "lng": 76.29384759999999
+          },
+          "southwest": {
+            "lat": 9.978777899999999,
+            "lng": 76.29348279999999
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+      "id": "2fe497ca10400f079525371a4bc8a1e4c0fca32f",
+      "name": "Garden Walkway Park",
+      "place_id": "ChIJXeVxA0oNCDsRKJQ8bBWr0ME",
+      "reference": "CmRbAAAADroYjrVc9OvLuV6K0M1balRxXzfC9xpMmRKUqAmB5B6216ueEiwhLOSxjyQE3tiUrQWoxa7HguQse2aUy_RBr_LzKJq6bjqSkhk8GDliyCWnW4EgnL5kPdxTzCvJroXUEhBlwI7Bdm2GyGmA4JIdnnk7GhRff_vYXharTGsUlKcFcH_R5e5xAg",
+      "scope": "GOOGLE",
+      "types": [
+        "park",
+        "premise",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "Gandhi Nagar"
+    }
+  ],
+  "status": "OK"
+}

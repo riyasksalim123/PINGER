@@ -6,7 +6,7 @@ import { ActionSheet, ActionSheetController, Config, NavController } from 'ionic
 import { ConferenceData } from '../../providers/conference-data';
 import { SessionDetailPage } from '../session-detail/session-detail';
 import { SpeakerDetailPage } from '../speaker-detail/speaker-detail';
-
+import { Backendservice } from '../../providers/backendservice';
 
 @Component({
   selector: 'page-speaker-list',
@@ -15,11 +15,13 @@ import { SpeakerDetailPage } from '../speaker-detail/speaker-detail';
 export class SpeakerListPage {
   actionSheet: ActionSheet;
   speakers = [];
-
-  constructor(public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public confData: ConferenceData, public config: Config) {
+  public data: any;
+  constructor(public actionSheetCtrl: ActionSheetController, public backend: Backendservice, public navCtrl: NavController, public confData: ConferenceData, public config: Config) {
     confData.getSpeakers().then(speakers => {
       this.speakers = speakers;
-    });
+      });
+
+    this.getfbresults();
   }
 
   goToSessionDetail(session) {
@@ -95,5 +97,20 @@ export class SpeakerListPage {
     });
 
     actionSheet.present();
+  }
+
+  public getfbresults() {
+      let fields = "id,name,gender,location,website,picture,relationship_status,photos";
+      let accestocken1 = "EAAZAavAKhfy4BABiLOELPXBeZA4dZCZA3iwXHGPigkAOb9fV3v1agMzQ3qVXXxeJ4zrd4f7rivScsRAdb0Hz63mYHZBc1XYJxaPOZCuQEGz4Tbt1w22eBaodieXckxlRNt9U1FzSMasxs5D4wAADkbdF6nB1P8JVrYfeHOkQsyYQZDZD";
+      let accestocke2 = "EAAZAavAKhfy4BAHfaGtiJhJK05J7kFHeZBtAKtoeLeCnR1jSZAQfN2wndUzhJcXnfOZCYpRGIY6HBmaC5h6uzJ7eNOsZC1cGAojc61V7ALtlO28P6Mt0Ws01gHaBTvnvCcEdBZCAvN2b5m5Oe0i7JpS7ZCMUTHCuUPlQAZB1ZAmfOgQZDZD";
+      let query = "https://graph.facebook.com/me?access_token=" + accestocke2 + "&fields=" + fields + "";
+      this.backend.load(query).then(mapData => {
+          this.data = mapData;
+
+          console.log(mapData);
+          alert(JSON.stringify(mapData));
+
+      });
+
   }
 }

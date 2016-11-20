@@ -57,6 +57,9 @@ export class MyPagePage {
         //});
 
 
+        let distance = this.latlongdist(40.7486, -73.9864, 40.7486, -73.9864);
+       
+
 
     }
     public showSnackbar(message?: string) {
@@ -189,5 +192,22 @@ export class MyPagePage {
         modal.present();
         
     };
+
+    latlongdist(lat1: any, lon1: any, lat2: any, lon2: any) {
+
+        //(Haversine formula)
+
+
+        var p = 0.017453292519943295;    // Math.PI / 180
+        var c = Math.cos;
+        var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+            c(lat1 * p) * c(lat2 * p) *
+            (1 - c((lon2 - lon1) * p)) / 2;
+        let ret = 12742 * Math.asin(Math.sqrt(a));
+        alert(ret);
+        return ret // 2 * R; R = 6371 km
+
+      
+    }
 }
 

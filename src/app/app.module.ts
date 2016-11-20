@@ -46,7 +46,7 @@ import { AgmCoreModule } from "angular2-google-maps/core";
   ],
   imports: [
       AgmCoreModule.forRoot({
-          apiKey: "AIzaSyBjNB7E2ezO5WxgAuaV4R7lOJKA9KhU3QM",
+          apiKey: "AIzaSyBmbRGUuc0yB4vKbxsW8BUr4hZ546opppM",
           libraries: ["places"]
       }),
     IonicModule.forRoot(ConferenceApp)

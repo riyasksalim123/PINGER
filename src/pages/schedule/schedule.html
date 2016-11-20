@@ -1,74 +1,114 @@
+﻿<style>
+    .imgListaPosition {
+    position: absolute;
+    z-index: 5;
+    top: 20%;
+    left: 80%;
+}
+
+.imgListaSize {
+    width: 100px;  
+    height : 100px;  
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50px;
+}
+</style>
 <ion-header>
-  <ion-navbar no-border-bottom>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+    <ion-navbar no-border-bottom>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
 
-    <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
-      <ion-segment-button value="all">
-        All
-      </ion-segment-button>
-      <ion-segment-button value="favorites">
-        Favorites
-      </ion-segment-button>
-    </ion-segment>
+        <!--<ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
+            <ion-segment-button value="all">
+                All
+            </ion-segment-button>
+            <ion-segment-button value="favorites">
+                Favorites
+            </ion-segment-button>
+        </ion-segment>-->
 
-    <ion-buttons end>
-      <button ion-button icon-only (click)="presentFilter()">
-        <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="presentFilter()">
+                <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 
-  <ion-toolbar no-border-top>
-    <ion-searchbar color="primary"
-                   [(ngModel)]="queryText"
-                   (ionInput)="updateSchedule()"
-                   placeholder="Search">
-    </ion-searchbar>
-  </ion-toolbar>
+    <ion-toolbar no-border-top>
+        <ion-searchbar color="primary"
+                       [(ngModel)]="queryText"
+                       (ionInput)="updateSchedule()"
+                       placeholder="Search">
+        </ion-searchbar>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list #scheduleList [hidden]="shownSessions === 0">
+    <ion-list >
 
-    <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
+        <!--<ion-item-group *ngFor="let group of params" >
 
-      <ion-item-divider sticky>
-        <ion-label>
-          {{group.time}}
-        </ion-label>
-      </ion-item-divider>
+            <ion-item-divider sticky style="background-color:black">
+                <ion-label>
+                    {{group.name}}
+                </ion-label>
+            </ion-item-divider>-->
 
-      <ion-item-sliding *ngFor="let session of group.sessions" #slidingItem [attr.track]="session.tracks[0] | lowercase" [hidden]="session.hide">
+            <!--<ion-item-sliding *ngFor="let session of group.types" #slidingItem [attr.track]="session.tracks[0] | lowercase" [hidden]="session.hide">
 
-        <button ion-item (click)="goToSessionDetail(session)">
-          <h3>{{session.name}}</h3>
-          <p>
-            {{session.timeStart}} &mdash;
-            {{session.timeEnd}}:
-            {{session.location}}
-          </p>
+                <button ion-item (click)="goToSessionDetail(session)">
+                    <h3>{{session}}</h3>
+                    <p>
+                        {{session.timeStart}} &mdash;
+                        {{session.timeEnd}}:
+                        {{session.location}}
+                    </p>
+                </button>
+
+                <ion-item-options>
+                    <button ion-button color="favorite" (click)="addFavorite(slidingItem, session)" *ngIf="segment === 'all'">
+                        Favorite
+                    </button>
+                    <button ion-button color="danger" (click)="removeFavorite(slidingItem, session, 'Remove Favorite')" *ngIf="segment === 'favorites'">
+                        Remove
+                    </button>
+                </ion-item-options>
+
+            </ion-item-sliding>-->
+
+        <!--</ion-item-group>-->
+
+
+
+        <ion-item-sliding *ngFor="let group of params" #slidingItem [attr.track]="group.name | lowercase">
+
+            <button ion-item (click)="goToSessionDetail(group)" style="background-color:gray">
+                <h3 style="color:white">{{group.name}}</h3>
+                <p style="color:white">
+                    {{group.interest}} 
+                    <ion-icon name="ios-compass-outline" item-right></ion-icon>
+                   <!--{{group.icon}}:-->
+                   <!--{{group.name}}-->
+                </p>
+            </button>
+
+            <ion-item-options>
+                <button ion-button color="favorite" (click)="addFavorite(slidingItem, session)" >
+                    Favorite
+                </button>
+                <button ion-button color="danger" (click)="removeFavorite(slidingItem, session, 'Remove Favorite')" >
+                    Remove
+                </button>
+            </ion-item-options>
+
+        </ion-item-sliding>
+
+    </ion-list>
+        <button ion-item color="dark" (click)="gotosync()">
+            <ion-icon name="cafe" item-left></ion-icon>
+            sync with your personal interest
         </button>
-
-        <ion-item-options>
-          <button ion-button color="favorite" (click)="addFavorite(slidingItem, session)" *ngIf="segment === 'all'">
-            Favorite
-          </button>
-          <button ion-button color="danger" (click)="removeFavorite(slidingItem, session, 'Remove Favorite')" *ngIf="segment === 'favorites'">
-            Remove
-          </button>
-        </ion-item-options>
-
-      </ion-item-sliding>
-
-    </ion-item-group>
-
-  </ion-list>
-
-  <ion-list-header [hidden]="shownSessions > 0">
-      No Sessions Found
-  </ion-list-header>
-
-
+    
 </ion-content>

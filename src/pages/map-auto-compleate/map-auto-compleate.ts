@@ -1,9 +1,14 @@
 import { Component,ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ModalController, LoadingController, ViewController, NavParams } from 'ionic-angular';
+import { ModalController, LoadingController, ViewController, NavParams, ToastController } from 'ionic-angular';
 import { OnInit, ViewChild } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { MapsAPILoader } from 'angular2-google-maps/core';
+import { Http } from '@angular/http';
+import { TextToSpeech } from 'ionic-native';
+import { SpeakerListPage } from '../speaker-list/speaker-list';
+import { Backendservice } from '../../providers/backendservice';
+import { SchedulePage } from '../schedule/schedule';
 declare var google: any;
 /*
   Generated class for the MapAutoCompleate page.
@@ -47,17 +52,28 @@ export class MapAutoCompleatePage implements OnInit {
     public zoom: number;
     public decition: string;
     public title: string;
+    public res: any
+    public poibutton: boolean = false;
+
+    public array=[];
     @ViewChild("search")
     public searchElementRef: ElementRef;
+    public PoiData: any
 
 
-
-    constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public view: ViewController, private mapsAPILoader: MapsAPILoader) {
+    constructor(public navCtrl: NavController,
+        public navParams: NavParams,
+        public backend: Backendservice,
+        public modalCtrl: ModalController,
+        public view: ViewController,
+        private mapsAPILoader: MapsAPILoader,
+        private toastCtrl: ToastController, public http: Http ) {
 
         this.decition = this.navParams.data;
 
         if (this.decition == "current") {
             this.title = "Your current location";
+
 
         }
         else {
@@ -74,6 +90,9 @@ export class MapAutoCompleatePage implements OnInit {
 
       this.view.dismiss();
   }
+
+
+   
 
   ngOnInit() {
       //set google maps defaults
@@ -104,7 +123,8 @@ export class MapAutoCompleatePage implements OnInit {
                   this.latitude = autocomplete.getPlace().geometry.location.lat();
                   this.longitude = autocomplete.getPlace().geometry.location.lng();
 
-                  alert(this.latitude)
+                  this.locationset(this.latitude, this.longitude);
+                  //alert(this.latitude)
               });
           });
 
@@ -120,8 +140,101 @@ export class MapAutoCompleatePage implements OnInit {
               this.latitude = position.coords.latitude;
               this.longitude = position.coords.longitude;
               this.zoom = 12;
+              this.locationset(this.latitude,this.longitude);
           });
       }
   }
+  public locationset(lat: any, long: any) {
+    
+      let url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + "&sensor=true'";
+      this.backend.load(url).then(data => {
+          this.speak("you selected " + data.results[0].address_components[2].long_name + " .");
+          this.toast("you selected " + data.results[0].formatted_address + " .");
+          //let addr = data.results[0].address_components[2].long_name;
+          console.log(data.results[0].address_components[2].long_name);
+          //neeed to do latrer
+         // this.description(addr);
+          
+          this.getinterest(lat, long);
 
+      });
+
+  }
+  public description(item: string) {
+      //http://api.geonames.org/wikipediaSearchJSON?formatted=true&q=palakkad&maxRows=10&username=demo&style=full
+
+      let url = "https://en.wikipedia.org/w/api.php?action=query&prop=description&titles=kaloor&prop=extracts&exintro&explaintext&exsentences=3&format=json&redirects&callback=?";
+      this.backend.load(url).then(data => {
+         
+          console.log(data);
+      });
+
+  }
+
+  //COUNTRY clientInformation
+  //http://api.geonames.org/countryInfoJSON?formatted=true&lang=it&country=IN&username=demo&style=full
+
+  public getinterest(lat: any, lon: any, radius?: any) {
+
+      //  alert("getinterest");
+      this.poibutton = true;
+      if (radius == null) {
+          radius = 10000;
+      }
+
+        //let interests: any = ["park", "museum", "amusement_park", "art_gallery", "aquarium", "atm", "beauty_salon", "book_store", "movie_theater", "casino", "bowling_alley", "bus_station", "cafe", "city_hall", "restaurant", "shopping_mall", "spa", "stadium", "zoo", "hair_care", "gym", "grocery_or_supermarket", "home_goods_store"];
+      let interests: any = ["park", "museum", "amusement_park"];
+  
+        //for (var z = 0; interests.length < 0; z++) {
+      for (var z = 0; z < interests.length; z++) { 
+         
+            let currentinteres = interests[z];
+          // let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&radius=" + radius + "&type=" + currentinteres + "&key=AIzaSyBmbRGUuc0yB4vKbxsW8BUr4hZ546opppM";
+            let url = "https://api.myjson.com/bins/ysp6";
+            //this.backend.load(url).then(result => {
+            this.http.get(url).subscribe(res => {
+                this.res = res;
+                this.res = JSON.parse(this.res._body);
+                let resultlength = this.res.results.length;
+
+                if (resultlength > 0) {
+                    for (var i = 0; i < resultlength; i++) { 
+
+                        let name = this.res.results[i].name;
+                        console.log(this.res.results[i]);
+                        this.PoiData = this.res.results[i];
+                        this.array.push(this.PoiData);
+                        this.array[i]["interest"] = currentinteres;
+
+                        //alert(currentinteres+" category  :"+name);
+
+                    }
+                }
+
+            });
+      }
+
+            //});
+
+        //}
+
+  }
+
+  public speak(text: string) {      
+      TextToSpeech.speak(text)
+          .then(() => console.log('Success'))
+          .catch((reason: any) => console.log(reason));
+  }
+  public toast(text: string) {
+      let toast = this.toastCtrl.create({
+          message: text,
+          duration: 10000,
+          position: 'top'
+      });
+      toast.present();
+  }
+  public showpoi() {
+
+      this.navCtrl.push(SchedulePage, this.array);
+  }
 }

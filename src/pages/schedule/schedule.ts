@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-
-import { AlertController, App, ItemSliding, List, ModalController, NavController } from 'ionic-angular';
-
+import { ModalController, LoadingController, ViewController, NavParams, ToastController } from 'ionic-angular';
+import { AlertController, App, ItemSliding, List, NavController } from 'ionic-angular';
+import { SpeakerListPage } from '../speaker-list/speaker-list';
 /*
   To learn how to use third party libs in an
   Ionic app check out our docs here: http://ionicframework.com/docs/v2/resources/third-party-libs/
@@ -32,16 +32,19 @@ export class SchedulePage {
   shownSessions: any = [];
   groups = [];
   confDate: string;
-
+  public params: any;
   constructor(
     public alertCtrl: AlertController,
     public app: App,
     public modalCtrl: ModalController,
     public navCtrl: NavController,
     public confData: ConferenceData,
-    public user: UserData
+    public user: UserData,
+    public navParams: NavParams
+   
   ) {
-
+      this.params = this.navParams.data;
+      alert(JSON.stringify(this.params));
   }
 
   ionViewDidEnter() {
@@ -144,4 +147,12 @@ export class SchedulePage {
     // now present the alert on top of all other content
     alert.present();
   }
+
+  public gotosync() {
+
+      this.navCtrl.push(SpeakerListPage);
+
+  }
+
+ 
 }

@@ -22,8 +22,11 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content>
-    <div padding>
+<ion-content  style="background-color:gray">
+    <div class="about-header">
+        <img src="assets/img/ionic-logo-white.svg">
+    </div>
+    <div padding  style="background-color:gray">
         <div class="container">
           
             <div class="form-group" *ngIf="decition=='manual'">
@@ -31,9 +34,15 @@
             </div>
             <br />
             <br />
+
+           
             <sebm-google-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
                 <sebm-google-map-marker [latitude]="latitude" [longitude]="longitude"></sebm-google-map-marker>
             </sebm-google-map>
+
+            <ion-item *ngIf="poibutton" color="dark">
+                <button ion-button full (click)="showpoi()">show poi</button>
+            </ion-item>
         </div>
     </div>
 </ion-content>

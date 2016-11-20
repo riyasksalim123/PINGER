@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 //*/
 
 declare var Clarifai;
+declare var Headers;
 @Injectable()
 
 export class Backendservice {
@@ -35,7 +36,16 @@ export class Backendservice {
           // We're using Angular Http provider to request the data,
           // then on the response it'll map the JSON data to a parsed JS object.
           // Next we process the data and resolve the promise with the new data.
-          this.http.get(url,config).subscribe(res => {
+
+          let headers = new Headers(); 
+          headers.append('Accept', 'application/json');
+          headers.append('Content-Type', 'application/json');
+          headers.append('Access-Control-Allow-Origin', '*');
+          headers.append('Access-Control-Allow-Credentials', 'true');
+          headers.append("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
+          headers.append("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token");
+
+          this.http.get(url, headers).subscribe(res => {
               // we've got back the raw data, now generate the core schedule data
               // and save the data for later reference
               this.data = res.json();
@@ -43,7 +53,10 @@ export class Backendservice {
           });
       });
     }
+    loaddup(url: string) {
 
+
+    }
     loadclarify()
     {
 
