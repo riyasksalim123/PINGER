@@ -1,6 +1,6 @@
 import { Component,ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ModalController, LoadingController, ViewController } from 'ionic-angular';
+import { ModalController, LoadingController, ViewController, NavParams } from 'ionic-angular';
 import { OnInit, ViewChild } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { MapsAPILoader } from 'angular2-google-maps/core';
@@ -36,8 +36,8 @@ declare var google: any;
 //  `
 //})
 @Component({
-    selector: 'my-app',
-    templateUrl:'map-auto-compleate.html'
+    selector: 'map-auto',
+    templateUrl: "map-auto-compleate.html"
 })
 export class MapAutoCompleatePage implements OnInit {
 
@@ -45,13 +45,18 @@ export class MapAutoCompleatePage implements OnInit {
     public longitude: number;
     public searchControl: FormControl;
     public zoom: number;
+    public decition: string;
 
     @ViewChild("search")
     public searchElementRef: ElementRef;
 
 
 
-    constructor(public navCtrl: NavController, public modalCtrl: ModalController, public view: ViewController, private mapsAPILoader: MapsAPILoader) { }
+    constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public view: ViewController, private mapsAPILoader: MapsAPILoader) {
+
+        this.decition = this.navParams.data;
+        //alert(this.decition);
+    }
 
   ionViewDidLoad() {
     console.log('Hello MapAutoCompleatePage Page');
@@ -72,24 +77,33 @@ export class MapAutoCompleatePage implements OnInit {
       this.searchControl = new FormControl();
 
       //set current position
-      this.setCurrentPosition();
 
-      //load Places Autocomplete
-      this.mapsAPILoader.load().then(() => {
-          let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-              types: ["address"]
+      if (this.decition == "current") {
+
+          this.setCurrentPosition();
+      }
+      else {
+          //load Places Autocomplete
+          this.mapsAPILoader.load().then(() => {
+              let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+                  types: ["address"]
+              });
+              autocomplete.addListener("place_changed", () => {
+                  //get the place result
+                  // let place=  google.maps.places.PlaceResult = autocomplete.getPlace();
+
+                  //set latitude and longitude
+                  this.latitude = autocomplete.getPlace().geometry.location.lat();
+                  this.longitude = autocomplete.getPlace().geometry.location.lng();
+
+                  alert(this.latitude)
+              });
           });
-          autocomplete.addListener("place_changed", () => {
-              //get the place result
-              let place:  google.maps.places.PlaceResult = autocomplete.getPlace();
 
-              //set latitude and longitude
-              this.latitude = place.geometry.location.lat();
-              this.longitude = place.geometry.location.lng();
+      }
+    
 
-              alert(this.latitude)
-          });
-      });
+    
   }
 
   private setCurrentPosition() {

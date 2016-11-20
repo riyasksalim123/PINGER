@@ -25,14 +25,12 @@
 <ion-content>
     <div padding>
         <div class="container">
-            <ion-item>
-                <ion-label floating>Password</ion-label>
-                <ion-input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search [formControl]="searchControl"></ion-input>
-            </ion-item>
-            <!--<div class="form-group">
-                <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
-
-            </div>-->
+          
+            <div class="form-group" *ngIf="decition=='manual'">
+                <input style="width: 100%;height: 40px;background-color: grey;" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+            </div>
+            <br />
+            <br />
             <sebm-google-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
                 <sebm-google-map-marker [latitude]="latitude" [longitude]="longitude"></sebm-google-map-marker>
             </sebm-google-map>

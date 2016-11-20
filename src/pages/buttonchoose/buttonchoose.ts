@@ -1,28 +1,21 @@
-import { Component, ElementRef, ViewChild} from '@angular/core';
+import { Component} from '@angular/core';
 
-import { PopoverController } from 'ionic-angular';
+import { PopoverController, NavController, ViewController } from 'ionic-angular';
 
 import { PopoverPage } from '../about-popover/about-popover';
-declare var google: any;
-declare var Autocomplete: any;
 
+import { MapAutoCompleatePage } from '../map-auto-compleate/map-auto-compleate';
 @Component({
   selector: 'page-buttonchoose',
   templateUrl: 'buttonchoose.html'
 })
 export class ButtonchoosePage {
     public data: any;
-    public selectedItem: string = "kaloor";
-    conferenceDate = '2047-05-17';
-
-    fromValue: string;
-
-    toValue: string;
+  
     public islocationchoosen: boolean;
-    constructor(public popoverCtrl: PopoverController) {
+    constructor(public popoverCtrl: PopoverController, public navCtrl: NavController, public view: ViewController) {
         this.islocationchoosen = true;
-        this.fromValue = "";
-        this.toValue = "";
+     
     }
 
     presentPopover(event) {
@@ -30,58 +23,32 @@ export class ButtonchoosePage {
         popover.present({ ev: event });
     }
 
-    public test() {
-        alert("ehef")
-
-    }
+  
     public location(location: string) {
-        this.islocationchoosen = false;
 
-       // this.initialize();
+        // this.islocationchoosen = false;
+        this.dismiss();
         if (location == "manual") {
-            alert(location);
-           
+         
+            this.goToautomapDetail(location);
 
         }
         else
         {
-            alert(location);
+          
+            this.goToautomapDetail(location);
         }
 
     }
 
-    ngAfterViewInit() {
-        // get the two fields
-        let input_from = (<HTMLInputElement>document.getElementById("journey_from"));
-        let input_to = (<HTMLInputElement>document.getElementById("journey_to"));
-
-        // set the options
-        let options = {
-            types: [],
-            componentRestrictions: { country: "uk" }
-        };
-
-        // create the two autocompletes on the from and to fields
-        let autocomplete1 = new google.maps.places.Autocomplete(input_from, options);
-        let autocomplete2 = new google.maps.places.Autocomplete(input_to, options);
-
-        // we need to save a reference to this as we lose it in the callbacks
-        let self = this;
-
-        // add the first listener
-        google.maps.event.addListener(autocomplete1, 'place_changed', function () {
-
-            let place = autocomplete1.getPlace();
-            let geometry = place.geometry;
-            if ((geometry) !== undefined) {
-
-                console.log(place.name);
-
-                console.log(geometry.location.lng());
-
-                console.log(geometry.location.lat());
-            }
-        });
-
+    goToautomapDetail(decition: string) {
+        this.navCtrl.push(MapAutoCompleatePage, decition);
     }
+
+    dismiss() {
+
+        this.view.dismiss();
+    }
+
+    
 }
