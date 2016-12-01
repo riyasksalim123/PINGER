@@ -57,7 +57,7 @@ export class MyPagePage {
         //});
 
 
-        let distance = this.latlongdist(40.7486, -73.9864, 40.7486, -73.9864);
+      //  let distance = this.latlongdist(40.7486, -73.9864, 40.7486, -73.9864);
        
 
 
@@ -77,7 +77,7 @@ export class MyPagePage {
         let modal = this.modalCtrl.create(MapAutoCompleatePage);
         modal.present();
     }
-    getAddress(place: Object) {
+    public getAddress(place: Object) {
         this.address = place['formatted_address'];
         var location = place['geometry']['location'];
         var lat = location.lat();
@@ -123,7 +123,7 @@ export class MyPagePage {
         });
         toast.present();
     }
-    login() {
+    public login() {
 
 
         this.facebookauth();
@@ -143,10 +143,7 @@ export class MyPagePage {
         });
         
     }
-    public testdoc() {
-        let modal = this.modalCtrl.create(MapAutoCompleatePage);
-        modal.present();
-    }
+ 
     public opengoogleauto() {
 
         let modal = this.modalCtrl.create(MapPage);
@@ -181,19 +178,16 @@ export class MyPagePage {
    
     }
     public redirecttofb() {
-        //PinDialog.prompt('Enter your PIN', 'Verify PIN', ['OK', 'Cancel'])
-        //    .then(
-        //    (result: any) => {
-        //        if (result.buttonIndex == 1) console.log('User clicked OK, value is: ', result.input1);
-        //        else if (result.buttonIndex == 2) console.log('User cancelled');
-        //    }
-        //    );
+     
         let modal = this.modalCtrl.create(ButtonchoosePage);
         modal.present();
         
     };
+    public signup() {
 
-    latlongdist(lat1: any, lon1: any, lat2: any, lon2: any) {
+
+    }
+    public latlongdist(lat1: any, lon1: any, lat2: any, lon2: any) {
 
         //(Haversine formula)
 

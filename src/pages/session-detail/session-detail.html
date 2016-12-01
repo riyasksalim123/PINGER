@@ -7,15 +7,19 @@
 <ion-content padding>
   <h1>{{session.name}}</h1>
 
-  <h4 *ngFor="let speaker of session.speakers">
-    {{speaker.name}}
-  </h4>
+    <p>{{session.vicinity}}</p>
+ <div *ngIf="session.opening_hours.open_now !== 'undefined'">
+     <p *ngIf="session.opening_hours.open_now === true">
+         open now
+     </p>
+     <p *ngIf="session.opening_hours.open_now === false">
+         closed now
+     </p>
 
-  <p>
-    {{session.timeStart}} - {{session.timeEnd}}
-  </p>
-
-  <p>{{session.location}}</p>
-
-  <p>{{session.description}}</p>
+ </div>
+ 
+    rating
+  <p>{{session.rating}}</p>
+    catogery 
+    <p>{{session.types[0]}}</p>
 </ion-content>

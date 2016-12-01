@@ -52,7 +52,7 @@ export class SchedulePage {
   }
 
   ngAfterViewInit() {
-    this.updateSchedule();
+   // this.updateSchedule();
   }
 
   updateSchedule() {

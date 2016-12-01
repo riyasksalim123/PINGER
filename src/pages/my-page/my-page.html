@@ -1,64 +1,37 @@
 
 <ion-header style="background-color:black">
 
-  <ion-navbar>
-    <!--<ion-title>myPage</ion-title>-->
-      <div class="content">
-          <div class="app-icon"></div>
-          <h1 style="text-align:center !important">Personalised Travel Sequence</h1>
-      </div>
-  </ion-navbar>
+    <ion-navbar>
+
+        <div class="content">
+            <div class="app-icon"></div>
+            <h1 style="text-align:center !important">Personalised Travel Sequence</h1>
+        </div>
+    </ion-navbar>
 
 </ion-header>
 
 <ion-content style="background-color:black">
 
 
-     
-            <ion-list>
 
-                <ion-item>
-                    <ion-label floating>Username</ion-label>
-                    <ion-input type="text"></ion-input>s
-                </ion-item>
+    <ion-list>
 
-                <ion-item>
-                    <ion-label floating>Password</ion-label>
-                    <ion-input type="password"></ion-input>
-                </ion-item>
+        <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input type="text"></ion-input>s
+        </ion-item>
 
-                <button ion-button full (click)="redirecttofb()">fblogin</button>
-                <!--<button ion-button full (click)="getloginstatus()">getloginstatus</button>-->
-                <button ion-button full (click)="opengoogleauto()">getloginstatus</button>
-                <button (click)="testdoc()">bgh</button>
-                    <!--<button ion-button full (click)="redirecttomap()">go to map</button>
-                <button ion-button full (click)="presentLoading()">go to loading</button>
-                <button ion-button full (click)="goToOtherPage()">go to other page</button>-->
-                
-            </ion-list>
-  
-    
-        
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password"></ion-input>
+        </ion-item>
+        <button ion-button full (click)="signup()">sign up</button>
+        <button ion-button full (click)="redirecttofb()">fblogin</button>
 
+        <button ion-button full (click)="opengoogleauto()">getloginstatus</button>
 
-  
-      
-            <!--<ion-md-input placeholder="Username" highlight-color="balanced" ng-model="user.name" type="text"></ion-md-input>
-            <ion-md-input placeholder="Password" highlight-color="energized" ng-model="user.pass" type="password"></ion-md-input>-->
-     
-        <!--<div class="padding">
-            ui-sref="app.profile"
-            <button ng-click="login(user)" class="button button-full button-positive ink">Login</button>
-            <button ng-click="start()" class="button button-full button-positive ink">Get Started</button>
-            <button ui-sref="app.profile">test123</button>
-            <button ng-click="currentlocation()">currentlocation</button>
-            <md-button ng-click="toast()" class="md-raised" style="padding-left: 10px;padding-right: 10px;">
-                Show Custom Toast
-            </md-button>
-            <button ng-click="fb()">fb</button>
-            <button ng-click="speakText()">speak</button>-->
+    </ion-list>
 
-
-     
 
 </ion-content>

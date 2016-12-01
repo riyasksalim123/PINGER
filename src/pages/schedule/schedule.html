@@ -29,11 +29,11 @@
             </ion-segment-button>
         </ion-segment>-->
 
-        <ion-buttons end>
+        <!--<ion-buttons end>
             <button ion-button icon-only (click)="presentFilter()">
                 <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
             </button>
-        </ion-buttons>
+        </ion-buttons>-->
     </ion-navbar>
 
     <ion-toolbar no-border-top>
@@ -84,9 +84,9 @@
 
         <ion-item-sliding *ngFor="let group of params" #slidingItem [attr.track]="group.name | lowercase">
 
-            <button ion-item (click)="goToSessionDetail(group)" style="background-color:gray">
-                <h3 style="color:white">{{group.name}}</h3>
-                <p style="color:white">
+            <button ion-item (click)="goToSessionDetail(group)" style="background-color:#387ef5">
+                <h3 >{{group.name}}</h3>
+                <p >
                     {{group.interest}} 
                     <ion-icon name="ios-compass-outline" item-right></ion-icon>
                    <!--{{group.icon}}:-->
@@ -104,11 +104,11 @@
             </ion-item-options>
 
         </ion-item-sliding>
-
-    </ion-list>
         <button ion-item color="dark" (click)="gotosync()">
             <ion-icon name="cafe" item-left></ion-icon>
             sync with your personal interest
         </button>
+    </ion-list>
+       
     
 </ion-content>
