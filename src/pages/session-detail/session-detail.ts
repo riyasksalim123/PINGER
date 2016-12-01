@@ -12,7 +12,7 @@ export class SessionDetailPage {
 
   constructor(public navParams: NavParams) {
       this.session = navParams.data;
-      alert(JSON.stringify(this.session));
-      console.log(JSON.stringify(this.session));
+      // alert(JSON.stringify(this.session));
+      // console.log(JSON.stringify(this.session));
   }
 }

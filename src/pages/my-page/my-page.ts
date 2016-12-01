@@ -86,6 +86,7 @@ export class MyPagePage {
     }
     public goToOtherPage() {
         this.navCtrl.push(TutorialPage);
+    
     }
     public loadCurrentLocation() {
 
@@ -163,12 +164,6 @@ export class MyPagePage {
                 this.storage.set('tocken', this.tocken).then(() => {
                     console.log('tocken has been set');
                 });
-
-               
-
-
-
-           
                 alert("RESULT: " + JSON.stringify(success));
             }, error => {
                 console.log("ERROR: ", error);
@@ -190,8 +185,6 @@ export class MyPagePage {
     public latlongdist(lat1: any, lon1: any, lat2: any, lon2: any) {
 
         //(Haversine formula)
-
-
         var p = 0.017453292519943295;    // Math.PI / 180
         var c = Math.cos;
         var a = 0.5 - c((lat2 - lat1) * p) / 2 +

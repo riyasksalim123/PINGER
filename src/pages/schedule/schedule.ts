@@ -19,10 +19,7 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'schedule.html'
 })
 export class SchedulePage {
-  // the list is a child of the schedule page
-  // @ViewChild('scheduleList') gets a reference to the list
-  // with the variable #scheduleList, `read: List` tells it to return
-  // the List and not a reference to the element
+
   @ViewChild('scheduleList', {read: List}) scheduleList: List;
 
   dayIndex = 0;
@@ -44,46 +41,46 @@ export class SchedulePage {
    
   ) {
       this.params = this.navParams.data;
-      alert(JSON.stringify(this.params));
+    //  alert(JSON.stringify(this.params));
   }
 
   ionViewDidEnter() {
-    this.app.setTitle('Schedule');
+    this.app.setTitle('poi');
   }
 
-  ngAfterViewInit() {
-   // this.updateSchedule();
-  }
+  // ngAfterViewInit() {
+  //  // this.updateSchedule();
+  // }
 
-  updateSchedule() {
-    // Close any open sliding items when the schedule updates
-    this.scheduleList && this.scheduleList.closeSlidingItems();
+  // updateSchedule() {
+  //   // Close any open sliding items when the schedule updates
+  //   this.scheduleList && this.scheduleList.closeSlidingItems();
 
-    this.confData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).then(data => {
-      let timestamp = data.date;
+  //   this.confData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).then(data => {
+  //     let timestamp = data.date;
 
-      /*
-        To learn how to use third party libs in an
-        Ionic app check out our docs here: http://ionicframework.com/docs/v2/resources/third-party-libs/
-      */
-      this.confDate = moment(timestamp).format('MM/DD/YYYY');
-      this.shownSessions = data.shownSessions;
-      this.groups = data.groups;
-    });
-  }
+  //     /*
+  //       To learn how to use third party libs in an
+  //       Ionic app check out our docs here: http://ionicframework.com/docs/v2/resources/third-party-libs/
+  //     */
+  //     this.confDate = moment(timestamp).format('MM/DD/YYYY');
+  //     this.shownSessions = data.shownSessions;
+  //     this.groups = data.groups;
+  //   });
+  // }
 
-  presentFilter() {
-    let modal = this.modalCtrl.create(ScheduleFilterPage, this.excludeTracks);
-    modal.present();
+  // presentFilter() {
+  //   let modal = this.modalCtrl.create(ScheduleFilterPage, this.excludeTracks);
+  //   modal.present();
 
-    modal.onDidDismiss((data: any[]) => {
-      if (data) {
-        this.excludeTracks = data;
-        this.updateSchedule();
-      }
-    });
+  //   modal.onDidDismiss((data: any[]) => {
+  //     if (data) {
+  //       this.excludeTracks = data;
+  //       this.updateSchedule();
+  //     }
+  //   });
 
-  }
+  // }
 
   goToSessionDetail(sessionData) {
     // go to the session detail page
@@ -91,62 +88,62 @@ export class SchedulePage {
     this.navCtrl.push(SessionDetailPage, sessionData);
   }
 
-  addFavorite(slidingItem: ItemSliding, sessionData) {
+  // addFavorite(slidingItem: ItemSliding, sessionData) {
 
-    if (this.user.hasFavorite(sessionData.name)) {
-      // woops, they already favorited it! What shall we do!?
-      // prompt them to remove it
-      this.removeFavorite(slidingItem, sessionData, 'Favorite already added');
-    } else {
-      // remember this session as a user favorite
-      this.user.addFavorite(sessionData.name);
+  //   if (this.user.hasFavorite(sessionData.name)) {
+  //     // woops, they already favorited it! What shall we do!?
+  //     // prompt them to remove it
+  //     this.removeFavorite(slidingItem, sessionData, 'Favorite already added');
+  //   } else {
+  //     // remember this session as a user favorite
+  //     this.user.addFavorite(sessionData.name);
 
-      // create an alert instance
-      let alert = this.alertCtrl.create({
-        title: 'Favorite Added',
-        buttons: [{
-          text: 'OK',
-          handler: () => {
-            // close the sliding item
-            slidingItem.close();
-          }
-        }]
-      });
-      // now present the alert on top of all other content
-      alert.present();
-    }
+  //     // create an alert instance
+  //     let alert = this.alertCtrl.create({
+  //       title: 'Favorite Added',
+  //       buttons: [{
+  //         text: 'OK',
+  //         handler: () => {
+  //           // close the sliding item
+  //           slidingItem.close();
+  //         }
+  //       }]
+  //     });
+  //     // now present the alert on top of all other content
+  //     alert.present();
+  //   }
 
-  }
+  // }
 
-  removeFavorite(slidingItem: ItemSliding, sessionData, title) {
-    let alert = this.alertCtrl.create({
-      title: title,
-      message: 'Would you like to remove this session from your favorites?',
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: () => {
-            // they clicked the cancel button, do not remove the session
-            // close the sliding item and hide the option buttons
-            slidingItem.close();
-          }
-        },
-        {
-          text: 'Remove',
-          handler: () => {
-            // they want to remove this session from their favorites
-            this.user.removeFavorite(sessionData.name);
-            this.updateSchedule();
+  // removeFavorite(slidingItem: ItemSliding, sessionData, title) {
+  //   let alert = this.alertCtrl.create({
+  //     title: title,
+  //     message: 'Would you like to remove this session from your favorites?',
+  //     buttons: [
+  //       {
+  //         text: 'Cancel',
+  //         handler: () => {
+  //           // they clicked the cancel button, do not remove the session
+  //           // close the sliding item and hide the option buttons
+  //           slidingItem.close();
+  //         }
+  //       },
+  //       {
+  //         text: 'Remove',
+  //         handler: () => {
+  //           // they want to remove this session from their favorites
+  //           this.user.removeFavorite(sessionData.name);
+  //           this.updateSchedule();
 
-            // close the sliding item and hide the option buttons
-            slidingItem.close();
-          }
-        }
-      ]
-    });
-    // now present the alert on top of all other content
-    alert.present();
-  }
+  //           // close the sliding item and hide the option buttons
+  //           slidingItem.close();
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   // now present the alert on top of all other content
+  //   alert.present();
+  // }
 
   public gotosync() {
 
