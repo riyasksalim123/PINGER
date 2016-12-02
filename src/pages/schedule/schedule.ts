@@ -30,6 +30,7 @@ export class SchedulePage {
   groups = [];
   confDate: string;
   public params: any;
+   public samplearray:any;
   constructor(
     public alertCtrl: AlertController,
     public app: App,
@@ -37,50 +38,42 @@ export class SchedulePage {
     public navCtrl: NavController,
     public confData: ConferenceData,
     public user: UserData,
+
+   
     public navParams: NavParams
    
   ) {
       this.params = this.navParams.data;
+      console.log(this.params);
     //  alert(JSON.stringify(this.params));
   }
 
   ionViewDidEnter() {
     this.app.setTitle('poi');
-  }
 
-  // ngAfterViewInit() {
-  //  // this.updateSchedule();
-  // }
+this.samplearray=[
+{
+      "menu1":{
+            "name":"Pan Pacific Park Recreation Center",
+            "age":20
 
-  // updateSchedule() {
-  //   // Close any open sliding items when the schedule updates
-  //   this.scheduleList && this.scheduleList.closeSlidingItems();
+      }
+,
 
-  //   this.confData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).then(data => {
-  //     let timestamp = data.date;
+      "menu2":{
+           "name":"Griffith Park",
+            "age":200
+      }
+}
 
-  //     /*
-  //       To learn how to use third party libs in an
-  //       Ionic app check out our docs here: http://ionicframework.com/docs/v2/resources/third-party-libs/
-  //     */
-  //     this.confDate = moment(timestamp).format('MM/DD/YYYY');
-  //     this.shownSessions = data.shownSessions;
-  //     this.groups = data.groups;
-  //   });
-  // }
+]
 
-  // presentFilter() {
-  //   let modal = this.modalCtrl.create(ScheduleFilterPage, this.excludeTracks);
-  //   modal.present();
+    console.log(this.samplearray);
+console.log(this.samplearray)
+    
+}
 
-  //   modal.onDidDismiss((data: any[]) => {
-  //     if (data) {
-  //       this.excludeTracks = data;
-  //       this.updateSchedule();
-  //     }
-  //   });
 
-  // }
 
   goToSessionDetail(sessionData) {
     // go to the session detail page

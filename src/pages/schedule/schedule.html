@@ -88,6 +88,11 @@
      <img src="http://il9.picdn.net/shutterstock/videos/4761188/thumb/10.jpg" (click)="goToSessionDetail(group)"/>
     <div class="card-title"> {{group.name}}</div>
     <div class="card-subtitle"> {{group.vicinity}}</div>
+    <div *ngFor="let samp of samplearray">
+        <div  *ngIf="samp.menu1.name == group.name"> {{samp.menu1.name}}</div>
+         <div  *ngIf="samp.menu2.name == group.name"> {{samp.menu2.name}}</div>
+        <!--<div *ngIf="samp.menu1.name!==group.name">dvgfdbfg</div>-->
+    </div>
   </ion-card>
 
 </ion-content>
