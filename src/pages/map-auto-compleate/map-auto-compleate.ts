@@ -34,18 +34,12 @@ export class MapAutoCompleatePage implements OnInit {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public backend: Backendservice,
-              public modalCtrl: ModalController,
               public view: ViewController,
               private mapsAPILoader: MapsAPILoader,
               private toastCtrl: ToastController,
               public http: Http) {
     this.decition = this.navParams.data;
     this.title=this.decition== "current" ? "Your current location" : "Please select the manual location";
-
-  }
-
-  ionViewDidLoad() {
-    console.log('Hello MapAutoCompleatePage Page');
   }
 
   ngOnInit() {
@@ -721,13 +715,11 @@ export class MapAutoCompleatePage implements OnInit {
       });
     }
   }
-
   public speak(text: string) {
     TextToSpeech.speak(text)
       .then(() => console.log('Success'))
       .catch((reason: any) => console.log(reason));
   }
-
   public toast(text: string) {
     let toast = this.toastCtrl.create({
       message: text,
@@ -736,13 +728,10 @@ export class MapAutoCompleatePage implements OnInit {
     });
     toast.present();
   }
-
   public showpoi() {
     this.navCtrl.push(SchedulePage, this.array);
   }
-
   public dismiss() {
-
     this.view.dismiss();
   }
 }
