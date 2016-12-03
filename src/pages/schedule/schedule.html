@@ -1,24 +1,4 @@
-﻿<!--<style>
-    .imgListaPosition {
-    position: absolute;
-    z-index: 5;
-    top: 20%;
-    left: 80%;
-}
-
-.imgListaSize {
-    width: 100px;  
-    height : 100px;  
-    max-width: 100px;
-    max-height: 100px;
-    border-radius: 50px;
-}-->
-
-<style>
-
-
-
-</style>
+﻿
 <ion-header>
     <ion-navbar no-border-bottom>
         <button ion-button menuToggle>
@@ -34,53 +14,10 @@
         </ion-searchbar>
     </ion-toolbar>
 </ion-header>
-<!--
-<ion-content>
-    <ion-list >
-        <ion-item-sliding *ngFor="let group of params" #slidingItem [attr.track]="group.name | lowercase">
-
-            <button ion-item (click)="goToSessionDetail(group)" style="background-color:#387ef5">
-                <h3 >{{group.name}}</h3>
-                <p >
-                    {{group.interest}} 
-                    <ion-icon name="ios-compass-outline" item-right></ion-icon>
-                
-                </p>
-            </button>
-
-            <ion-item-options>
-                <button ion-button color="favorite" (click)="addFavorite(slidingItem, session)" >
-                    Favorite
-                </button>
-                <button ion-button color="danger" (click)="removeFavorite(slidingItem, session, 'Remove Favorite')" >
-                    Remove
-                </button>
-            </ion-item-options>
-
-        </ion-item-sliding>
-        <button ion-item color="dark" (click)="gotosync()">
-            <ion-icon name="cafe" item-left></ion-icon>
-            sync with your personal interest
-        </button>
-    </ion-list>
-       
-    
-</ion-content>-->
 
 
 <ion-content class="card-background-page">
-<!--<ion-card *ngFor="let group of params">
-  <img src="http://big.assets.huffingtonpost.com/martymcflycamera.gif"/>
-  <ion-card-content (click)="goToSessionDetail(group)">
-    <ion-card-title>
-   {{group.name}}
-      </ion-card-title>
-    <p>
-         {{group.vicinity}}
-      
-    </p>
-  </ion-card-content>
-</ion-card>-->
+
 <ion-card *ngFor="let group of params" style="box-shadow: 8px 9px 24px;">
       <ion-card-title style="background-color:gray">
    {{group.interest}}
@@ -88,11 +25,7 @@
      <img src="http://il9.picdn.net/shutterstock/videos/4761188/thumb/10.jpg" (click)="goToSessionDetail(group)"/>
     <div class="card-title"> {{group.name}}</div>
     <div class="card-subtitle"> {{group.vicinity}}</div>
-    <div *ngFor="let samp of samplearray">
-        <div  *ngIf="samp.menu1.name == group.name"> {{samp.menu1.name}}</div>
-         <div  *ngIf="samp.menu2.name == group.name"> {{samp.menu2.name}}</div>
-        <!--<div *ngIf="samp.menu1.name!==group.name">dvgfdbfg</div>-->
-    </div>
+   
   </ion-card>
 
 </ion-content>
