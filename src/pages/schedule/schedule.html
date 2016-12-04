@@ -17,14 +17,32 @@
 
 <ion-content class="card-background-page">
 
-<ion-card *ngFor="let group of params" style="box-shadow: 8px 9px 24px;">
-      <ion-card-title style="background-color:gray">
-   {{group.interest}}
-      </ion-card-title>
-     <img src="http://il9.picdn.net/shutterstock/videos/4761188/thumb/10.jpg" (click)="goToSessionDetail(group)"/>
-    <div class="card-title"> {{group.name}}</div>
-    <div class="card-subtitle"> {{group.vicinity}}</div>
+<!--<ion-card *ngFor="let group of params" style="box-shadow: 8px 9px 24px;">-->
+      <!--<ion-card-title style="background-color:gray">-->
+   <!--{{group.interest}}-->
+      <!--</ion-card-title>-->
+     <!--<img src="http://il9.picdn.net/shutterstock/videos/4761188/thumb/10.jpg" (click)="goToSessionDetail(group)"/>-->
+    <!--<div class="card-title"> {{group.name}}</div>-->
+    <!--<div class="card-subtitle"> {{group.vicinity}}</div>-->
 
-  </ion-card>
+  <!--</ion-card>-->
+
+  <ion-list>
+    <ion-item *ngFor="let group of params">
+      <!--<ion-avatar item-left>-->
+        <!--<img src="http://il9.picdn.net/shutterstock/videos/4761188/thumb/10.jpg">-->
+      <!--</ion-avatar>-->
+
+      <!--<h2>{{group.interest}}</h2>-->
+      <h3>{{group.name}}</h3>
+      <p>{{group.vicinity}}</p>
+      <!--<ion-icon ios="ios-home" md="md-home"></ion-icon>-->
+      <!--<ion-icon *ngIf="item.gender=='male'" name="man" item-left></ion-icon>-->
+      <ion-icon name="logo-twitter" item-right></ion-icon>
+      <button ion-button item-right color="danger" (click)="goToSessionDetail(group)">View Details</button>
+
+    </ion-item>
+
+  </ion-list>
 
 </ion-content>

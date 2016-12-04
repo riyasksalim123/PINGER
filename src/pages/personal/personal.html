@@ -1,0 +1,93 @@
+<!--
+  Generated template for the Personal page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<style>
+  .item-profile {
+    height: 150px;
+  }
+  h1{
+    color: black;
+  }
+
+</style>
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>personal</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item class="item-profile" style="background-color: tomato;">
+    <div class="item-avatar">
+      <img ng-src="http://paulyfamily.org/themes/cloudy/images/silhouette_unknown.gif">
+    </div>
+    <h1>{{mydata.name}}</h1>
+    <p>{{mydata.gender}}</p>
+    <p>{{mydata.hometown.name}}</p>
+  </ion-item>
+
+  <h1>Interesting Places</h1>
+  <ion-list>
+    <ion-item *ngFor="let group of mydata.tagged_places.data">
+      <!--<ion-avatar item-left>-->
+      <!--<img src="http://il9.picdn.net/shutterstock/videos/4761188/thumb/10.jpg">-->
+      <!--</ion-avatar>-->
+
+      <!--<h2>{{group.interest}}</h2>-->
+      <h3>{{group.place.name}}</h3>
+      <!--<p>{{group.vicinity}}</p>-->
+      <!--<ion-icon ios="ios-home" md="md-home"></ion-icon>-->
+      <!--<ion-icon *ngIf="item.gender=='male'" name="man" item-left></ion-icon>-->
+      <ion-icon name="logo-twitter" item-right></ion-icon>
+      <button ion-button item-right color="danger">View Details</button>
+
+    </ion-item>
+
+  </ion-list>
+
+  <h1>Interesting Topics</h1>
+  <ion-list>
+    <ion-item *ngFor="let group of mydata.likes.data">
+      <!--<ion-avatar item-left>-->
+      <!--<img src="http://il9.picdn.net/shutterstock/videos/4761188/thumb/10.jpg">-->
+      <!--</ion-avatar>-->
+
+      <h2>{{group.name}}</h2>
+      <!--<h3>{{group.place.name}}</h3>-->
+      <!--<p>{{group.vicinity}}</p>-->
+      <!--<ion-icon ios="ios-home" md="md-home"></ion-icon>-->
+      <!--<ion-icon *ngIf="item.gender=='male'" name="man" item-left></ion-icon>-->
+      <ion-icon ios="ios-bulb" md="md-bulb" item-right></ion-icon>
+      <!--<ion-icon name="logo-twitter" item-right></ion-icon>-->
+      <button ion-button item-right color="danger">View Details</button>
+
+    </ion-item>
+
+  </ion-list>
+
+  <h1>Interesting Movies</h1>
+  <ion-list>
+    <ion-item *ngFor="let group of mydata.movies.data">
+      <!--<ion-avatar item-left>-->
+      <!--<img src="http://il9.picdn.net/shutterstock/videos/4761188/thumb/10.jpg">-->
+      <!--</ion-avatar>-->
+
+      <h2>{{group.name}}</h2>
+      <!--<h3>{{group.place.name}}</h3>-->
+      <!--<p>{{group.vicinity}}</p>-->
+      <!--<ion-icon ios="ios-home" md="md-home"></ion-icon>-->
+      <!--<ion-icon *ngIf="item.gender=='male'" name="man" item-left></ion-icon>-->
+      <ion-icon name="md-videocam" item-right></ion-icon>
+      <button ion-button item-right color="danger">View Details</button>
+
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

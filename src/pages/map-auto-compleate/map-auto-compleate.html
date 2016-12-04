@@ -10,6 +10,11 @@
      .sebm-google-map-container {
       height: 300px;
     }
+
+
+    .about-header img {
+       padding: 0px;
+    }
 </style>
 <ion-header>
     <ion-navbar>
@@ -23,9 +28,9 @@
 </ion-header>
 
 <ion-content  style="background-color:gray">
-    <div class="about-header">
-        <!--<img src="assets/img/ionic-logo-white.svg">-->
-    </div>
+  <div class="about-header">
+    <img style="box-shadow: 8px 9px 24px;" src="assets/img/blue_world_map-t2.jpg">
+  </div>
     <div padding  style="background-color:gray">
         <div class="container">
 
@@ -38,7 +43,7 @@
             </sebm-google-map>
 
             <ion-item *ngIf="poibutton" color="dark">
-                <button ion-button full (click)="showpoi()">show poi</button>
+                <button ion-button full color="danger" (click)="showpoi()">show poi</button>
             </ion-item>
         </div>
     </div>

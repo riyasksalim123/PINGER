@@ -11,7 +11,7 @@ import { Backendservice } from '../../providers/backendservice';
 import {CordovaOauth, Facebook} from 'ng2-cordova-oauth/core';
 import { Storage } from '@ionic/storage';
 import { ButtonchoosePage } from '../buttonchoose/buttonchoose';
-
+import { PersonalPage } from '../personal/personal';
 
 declare var window;
 declare var google: any;
@@ -34,7 +34,7 @@ export class MyPagePage {
     private cordovaOauth: CordovaOauth = new CordovaOauth();
     private facebookProvider: Facebook = new Facebook({
         clientId: "1788613404753710",
-        appScope: ["email", "read_stream", "user_website", "user_location", "user_relationships"]
+        appScope: ["email", "user_website", "user_location", "user_relationships"]
     })
     public facebook;
     constructor(public navCtrl: NavController,
@@ -58,7 +58,7 @@ export class MyPagePage {
       // let distance = this.backend.latlongdist(40.7486, -73.9864, 40.7486, -73.9864);
       // alert(distance)
 
-     // this.facebookauth();
+      //this.facebookauth();
 
 
 
@@ -126,16 +126,12 @@ export class MyPagePage {
         });
         toast.present();
     }
-    public login() {
 
-
-        this.facebookauth();
-
-    }
-    public getfbresults() {
-        let fields = "id,name,gender,location,website,picture,relationship_status,photos";
+    public getfbresults(tocken:any) {
+        let fields = "id,name,gender,location,website,picture,relationship_status,photos,inspirational_people,favorite_teams,test_group,movies,likes,tagged_places,hometown";
       //  let accestocken1 = "EAAZAavAKhfy4BABiLOELPXBeZA4dZCZA3iwXHGPigkAOb9fV3v1agMzQ3qVXXxeJ4zrd4f7rivScsRAdb0Hz63mYHZBc1XYJxaPOZCuQEGz4Tbt1w22eBaodieXckxlRNt9U1FzSMasxs5D4wAADkbdF6nB1P8JVrYfeHOkQsyYQZDZD";
-        let accestocke2 = "EAAZAavAKhfy4BAHfaGtiJhJK05J7kFHeZBtAKtoeLeCnR1jSZAQfN2wndUzhJcXnfOZCYpRGIY6HBmaC5h6uzJ7eNOsZC1cGAojc61V7ALtlO28P6Mt0Ws01gHaBTvnvCcEdBZCAvN2b5m5Oe0i7JpS7ZCMUTHCuUPlQAZB1ZAmfOgQZDZD";
+        let accestocke2 = tocken;
+      alert("get tocken"+tocken);
         let query = "https://graph.facebook.com/me?access_token=" + accestocke2 + "&fields=" + fields + "";
         this.backend.load(query).then(mapData => {
             this.data = mapData;
@@ -146,11 +142,7 @@ export class MyPagePage {
         });
 
     }
-    //public opengoogleauto() {
-    //
-    //    let modal = this.modalCtrl.create(MapPage);
-    //    modal.present();
-    //}
+
     public facebookauth() {
 
         this.cordovaOauth = new CordovaOauth();
@@ -163,10 +155,15 @@ export class MyPagePage {
                 alert(this.tocken);
 
 
-                this.storage.set('tocken', this.tocken).then(() => {
-                    console.log('tocken has been set');
-                });
-             alert("storageget"+this.storage.get('tocken'));
+             //   this.storage.set('tocken', this.tocken).then(() => {
+             //       console.log('tocken has been set');
+             //
+             //   });
+             //
+             //alert("storageget"+JSON.stringify(this.storage.get('tocken')));
+             // alert('tocken has been set');
+             // alert(this.storage.get('tocken'));
+              this.getfbresults(this.tocken);
 
             }, error => {
                 console.log("ERROR: ", error);
@@ -181,10 +178,17 @@ export class MyPagePage {
         modal.present();
 
     };
-    public signup() {
+public signup(){
 
+}
 
-    }
+  public test(){
+    let data= this.backend.mockfb();
+
+    //alert(JSON.stringify(data));
+    this.navCtrl.push(PersonalPage,data);
+
+  }
 
 
 }

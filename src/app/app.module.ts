@@ -22,6 +22,7 @@ import { UserData } from '../providers/user-data';
 import { Backendservice } from '../providers/backendservice';
 import { MapAutoCompleatePage } from '../pages/map-auto-compleate/map-auto-compleate';
 import { ButtonchoosePage } from '../pages/buttonchoose/buttonchoose';
+import { PersonalPage} from '../pages/personal/personal';
 import { AgmCoreModule } from "angular2-google-maps/core";
 
 @NgModule({
@@ -42,7 +43,8 @@ import { AgmCoreModule } from "angular2-google-maps/core";
     TutorialPage,
     MyPagePage,
       MapAutoCompleatePage,
-      ButtonchoosePage
+      ButtonchoosePage,
+    PersonalPage
   ],
   imports: [
       AgmCoreModule.forRoot({
@@ -69,7 +71,8 @@ import { AgmCoreModule } from "angular2-google-maps/core";
     TutorialPage,
     MyPagePage,
       MapAutoCompleatePage,
-      ButtonchoosePage
+      ButtonchoosePage,
+    PersonalPage
   ],
   providers: [ConferenceData, UserData, Storage, Backendservice]
 })

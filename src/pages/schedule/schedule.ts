@@ -24,7 +24,7 @@ export class SchedulePage {
 
   public params: any;
   public samplearray: any;
-  public queryText:any;
+  public queryText:any="";
   constructor(
     public alertCtrl: AlertController,
     public app: App,
