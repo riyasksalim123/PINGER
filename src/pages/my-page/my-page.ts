@@ -42,7 +42,7 @@ export class MyPagePage {
         public backend: Backendservice,
         public modalCtrl: ModalController,
         public platform: Platform,
-        public storage: Storage,
+        public storage: Storage
        )
     {
 
@@ -146,11 +146,11 @@ export class MyPagePage {
         });
 
     }
-    public opengoogleauto() {
-
-        let modal = this.modalCtrl.create(MapPage);
-        modal.present();
-    }
+    //public opengoogleauto() {
+    //
+    //    let modal = this.modalCtrl.create(MapPage);
+    //    modal.present();
+    //}
     public facebookauth() {
 
         this.cordovaOauth = new CordovaOauth();

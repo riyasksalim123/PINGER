@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 import { MenuController, NavController } from 'ionic-angular';
 
-import { TabsPage } from '../tabs/tabs';
 
 
+import { MyPagePage } from '../my-page/my-page';
 export interface Slide {
   title: string;
   description: string;
@@ -22,25 +22,27 @@ export class TutorialPage {
   constructor(public navCtrl: NavController, public menu: MenuController) {
     this.slides = [
       {
-        title: 'Welcome to <b>ICA</b>',
-        description: 'The <b>Ionic Conference App</b> is a practical preview of the Ionic Framework in action, and a demonstration of proper code use.',
-        image: 'assets/img/ica-slidebox-img-1.png',
+        title: 'Welcome to <b>PERSONALISED TRAVEL SEQUENCE</b>',
+        description: 'The <b>PERSONALISED TRAVEL SEQUENCE</b> is a automatic travel recomentation personalised to user interest.',
+        //image: 'assets/img/ica-slidebox-img-1.png',
+        image: 'assets/img/maxresdefault.jpg',
       },
       {
-        title: 'What is Ionic?',
-        description: '<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.',
-        image: 'assets/img/ica-slidebox-img-2.png',
+        title: 'What is Data Mining?',
+        description: '<b>Data Mining </b> is a practice of examining large preexcisting databases in order to generate new informations',
+        image: 'http://i63.tinypic.com/2vdl0yw.jpg',
+
       },
       {
-        title: 'What is Ionic Platform?',
-        description: 'The <b>Ionic Platform</b> is a cloud platform for managing and scaling Ionic apps with integrated services like push notifications, native builds, user auth, and live updating.',
-        image: 'assets/img/ica-slidebox-img-3.png',
+        title: 'What is Point of Interests?',
+        description: 'The <b>POI</b>is a specific point location that some one may find useful or interesing',
+        image: 'http://allthingsnav.navigation.com/sites/default/files/field/image/WaysToSearch.jpg',
       }
     ];
   }
 
   startApp() {
-    this.navCtrl.push(TabsPage);
+    this.navCtrl.push(MyPagePage);
   }
 
   onSlideChangeStart(slider) {
@@ -54,7 +56,7 @@ export class TutorialPage {
 
   ionViewWillLeave() {
     // enable the root left menu when leaving the tutorial page
-    this.menu.enable(true);
+    this.menu.enable(false);
   }
 
 }

@@ -39,7 +39,7 @@ export class MapAutoCompleatePage implements OnInit {
               private toastCtrl: ToastController,
               public http: Http) {
     this.decition = this.navParams.data;
-    this.title=this.decition== "current" ? "Your current location" : "Please select the manual location";
+   // this.title=this.decition== "current" ? "Your current location" : "Please select the manual location";
   }
 
   ngOnInit() {
@@ -644,8 +644,8 @@ export class MapAutoCompleatePage implements OnInit {
       autocomplete.addListener("place_changed", () => {
         this.latitude = autocomplete.getPlace().geometry.location.lat();
         this.longitude = autocomplete.getPlace().geometry.location.lng();
+        this.toast("you selected ");
         this.locationset(this.latitude, this.longitude);
-        //alert(this.latitude)
       });
     });
   }
@@ -666,8 +666,6 @@ export class MapAutoCompleatePage implements OnInit {
       this.speak("you selected " + data.results[0].address_components[2].long_name + " .");
       this.toast("you selected " + data.results[0].formatted_address + " .");
       console.log(data.results[0].address_components[2].long_name);
-      //neeed to do latrer
-      // this.description(addr);
       this.getinterest(lat, long);
 
     });
