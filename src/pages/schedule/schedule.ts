@@ -24,6 +24,7 @@ export class SchedulePage {
 
   public params: any;
   public samplearray: any;
+  public queryText:any;
   constructor(
     public alertCtrl: AlertController,
     public app: App,
@@ -51,11 +52,14 @@ export class SchedulePage {
     this.navCtrl.push(SessionDetailPage, sessionData);
   }
 
- 
+
 
   public gotosync() {
 
     this.navCtrl.push(SpeakerListPage);
+
+  }
+  public updateSchedule(){
 
   }
 

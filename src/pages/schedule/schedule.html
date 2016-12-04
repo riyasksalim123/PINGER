@@ -7,8 +7,7 @@
     </ion-navbar>
 
     <ion-toolbar no-border-top>
-        <ion-searchbar color="primary"
-                       [(ngModel)]="queryText"
+        <ion-searchbar color="primary" [(ngModel)]="queryText"
                        (ionInput)="updateSchedule()"
                        placeholder="Search">
         </ion-searchbar>
@@ -25,7 +24,7 @@
      <img src="http://il9.picdn.net/shutterstock/videos/4761188/thumb/10.jpg" (click)="goToSessionDetail(group)"/>
     <div class="card-title"> {{group.name}}</div>
     <div class="card-subtitle"> {{group.vicinity}}</div>
-   
+
   </ion-card>
 
 </ion-content>

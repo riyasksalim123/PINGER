@@ -58,6 +58,10 @@ export class MyPagePage {
       // let distance = this.backend.latlongdist(40.7486, -73.9864, 40.7486, -73.9864);
       // alert(distance)
 
+     // this.facebookauth();
+
+
+
 
     }
     public showSnackbar(message?: string) {
@@ -154,6 +158,7 @@ export class MyPagePage {
             this.cordovaOauth.logInVia(this.facebookProvider).then(success => {
 
                 this.data = success;
+                 alert("RESULT: " + JSON.stringify(success));
                 this.tocken = this.data.access_token;
                 alert(this.tocken);
 
@@ -161,7 +166,8 @@ export class MyPagePage {
                 this.storage.set('tocken', this.tocken).then(() => {
                     console.log('tocken has been set');
                 });
-                alert("RESULT: " + JSON.stringify(success));
+             alert("storageget"+this.storage.get('tocken'));
+
             }, error => {
                 console.log("ERROR: ", error);
                 alert(JSON.stringify(error));
@@ -179,6 +185,7 @@ export class MyPagePage {
 
 
     }
+
 
 }
 
