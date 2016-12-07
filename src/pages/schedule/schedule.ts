@@ -8,30 +8,30 @@ import { SpeakerListPage } from '../speaker-list/speaker-list';
 */
 //import moment from 'moment';
 
-import { ConferenceData } from '../../providers/conference-data';
-import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
+// import { ConferenceData } from '../../providers/conference-data';
+// import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { SessionDetailPage } from '../session-detail/session-detail';
-import { UserData } from '../../providers/user-data';
+import { HelperServices } from '../../providers/helper';
+// import { UserData } from '../../providers/user-data';
 
 
 @Component({
   selector: 'page-schedule',
-  templateUrl: 'schedule.html'
+  templateUrl: 'schedule.html',
+  providers:[HelperServices]
 })
 export class SchedulePage {
 
   @ViewChild('scheduleList', { read: List }) scheduleList: List;
 
   public params: any;
-  public samplearray: any;
+
   public queryText:any="";
   constructor(
-    public alertCtrl: AlertController,
-    public app: App,
-    public modalCtrl: ModalController,
-    public navCtrl: NavController,
-    public confData: ConferenceData,
-    public user: UserData,
+  
+    public helper: HelperServices,
+  
+  
     public navParams: NavParams
 
   ) {
@@ -39,29 +39,29 @@ export class SchedulePage {
 
   }
 
-  ionViewDidEnter() {
-    this.app.setTitle('poi');
+  // ionViewDidEnter() {
+  //   this.app.setTitle('poi');
 
 
-  }
+  // }
 
 
 
   goToSessionDetail(sessionData) {
-
-    this.navCtrl.push(SessionDetailPage, sessionData);
+this.helper.goToOtherPage(SessionDetailPage,sessionData);
+    // this.navCtrl.push(SessionDetailPage, sessionData);
   }
 
 
 
   public gotosync() {
-
-    this.navCtrl.push(SpeakerListPage);
-
-  }
-  public updateSchedule(){
+this.helper.goToOtherPage(SpeakerListPage);
+    // this.navCtrl.push(SpeakerListPage);
 
   }
+  // public updateSchedule(){
+
+  // }
 
 
 }
