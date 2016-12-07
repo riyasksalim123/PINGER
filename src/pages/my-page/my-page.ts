@@ -5,21 +5,23 @@ import { TabsPage } from '../tabs/tabs';
 import { MapAutoCompleatePage } from '../map-auto-compleate/map-auto-compleate';
 import { TutorialPage } from '../tutorial/tutorial';
 import { Geolocation, TextToSpeech } from 'ionic-native';
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Backendservice } from '../../providers/backendservice';
 // import lodash  from 'lodash';
-import {CordovaOauth, Facebook} from 'ng2-cordova-oauth/core';
+import { CordovaOauth, Facebook } from 'ng2-cordova-oauth/core';
 import { Storage } from '@ionic/storage';
 import { ButtonchoosePage } from '../buttonchoose/buttonchoose';
 import { PersonalPage } from '../personal/personal';
-
+import { WikipediaService } from '../../providers/wikiService';
+import { Observable } from 'rxjs/Observable';
 declare var window;
 declare var google: any;
 declare var FB;
 
 @Component({
     selector: 'page-my-page',
-    templateUrl: 'my-page.html'
+    templateUrl: 'my-page.html',
+    providers: [WikipediaService]
 })
 
 
@@ -32,6 +34,8 @@ export class MyPagePage {
     private sucess: any;
     public address: Object;
     private cordovaOauth: CordovaOauth = new CordovaOauth();
+
+    public items: Observable<string[]>;
     private facebookProvider: Facebook = new Facebook({
         clientId: "1788613404753710",
         appScope: ["email", "user_website", "user_location", "user_relationships"]
@@ -42,9 +46,10 @@ export class MyPagePage {
         public backend: Backendservice,
         public modalCtrl: ModalController,
         public platform: Platform,
-        public storage: Storage
-       )
-    {
+        public storage: Storage,
+
+        public wiki: WikipediaService
+    ) {
 
     }
 
@@ -55,12 +60,14 @@ export class MyPagePage {
         // });
 
 
-      // let distance = this.backend.latlongdist(40.7486, -73.9864, 40.7486, -73.9864);
-      // alert(distance)
+        // let distance = this.backend.latlongdist(40.7486, -73.9864, 40.7486, -73.9864);
+        // alert(distance)
 
-      //this.facebookauth();
+        //this.facebookauth();
 
-
+        alert(this.wiki.search("kaloor"));
+        alert(this.red("riyas"));
+        // this.goToOtherPage();
 
 
     }
@@ -75,22 +82,31 @@ export class MyPagePage {
 
 
     }
+    //    public search (term: string) {
+    //     this.items = this.wiki.search(term);
+    //   }
     public redirecttomap() {
         let modal = this.modalCtrl.create(MapAutoCompleatePage);
         modal.present();
     }
+
+    public red = (data: string) => (data == "riyas") ? "i am riyas" : "i am not riyas";
+
+
     public getAddress(place: Object) {
         this.address = place['formatted_address'];
-     //   var location = place['geometry']['location'];
+
+
+        //   var location = place['geometry']['location'];
         // var lat = location.lat();
         // var lng = location.lng();
         // console.log("Address Object", place);
     }
-    public goToOtherPage() {
-        this.navCtrl.push(TutorialPage);
+    public goToOtherPage = () => this.navCtrl.push(TutorialPage);
 
-    }
-    public loadCurrentLocation() {
+
+
+    public loadCurrentLocation = () => {
 
         Geolocation.getCurrentPosition().then(pos => {
 
@@ -113,7 +129,7 @@ export class MyPagePage {
         // });
 
     }
-    public speak(text: string) {
+    public speak = (text: string) => {
         TextToSpeech.speak(text)
             .then(() => console.log('Success'))
             .catch((reason: any) => console.log(reason));
@@ -127,11 +143,11 @@ export class MyPagePage {
         toast.present();
     }
 
-    public getfbresults(tocken:any) {
+    public getfbresults(tocken: any) {
         let fields = "id,name,gender,location,website,picture,relationship_status,photos,inspirational_people,favorite_teams,test_group,movies,likes,tagged_places,hometown";
-      //  let accestocken1 = "EAAZAavAKhfy4BABiLOELPXBeZA4dZCZA3iwXHGPigkAOb9fV3v1agMzQ3qVXXxeJ4zrd4f7rivScsRAdb0Hz63mYHZBc1XYJxaPOZCuQEGz4Tbt1w22eBaodieXckxlRNt9U1FzSMasxs5D4wAADkbdF6nB1P8JVrYfeHOkQsyYQZDZD";
+        //  let accestocken1 = "EAAZAavAKhfy4BABiLOELPXBeZA4dZCZA3iwXHGPigkAOb9fV3v1agMzQ3qVXXxeJ4zrd4f7rivScsRAdb0Hz63mYHZBc1XYJxaPOZCuQEGz4Tbt1w22eBaodieXckxlRNt9U1FzSMasxs5D4wAADkbdF6nB1P8JVrYfeHOkQsyYQZDZD";
         let accestocke2 = tocken;
-      alert("get tocken"+tocken);
+        alert("get tocken" + tocken);
         let query = "https://graph.facebook.com/me?access_token=" + accestocke2 + "&fields=" + fields + "";
         this.backend.load(query).then(mapData => {
             this.data = mapData;
@@ -150,20 +166,10 @@ export class MyPagePage {
             this.cordovaOauth.logInVia(this.facebookProvider).then(success => {
 
                 this.data = success;
-                 alert("RESULT: " + JSON.stringify(success));
+                alert("RESULT: " + JSON.stringify(success));
                 this.tocken = this.data.access_token;
                 alert(this.tocken);
-
-
-             //   this.storage.set('tocken', this.tocken).then(() => {
-             //       console.log('tocken has been set');
-             //
-             //   });
-             //
-             //alert("storageget"+JSON.stringify(this.storage.get('tocken')));
-             // alert('tocken has been set');
-             // alert(this.storage.get('tocken'));
-              this.getfbresults(this.tocken);
+                this.getfbresults(this.tocken);
 
             }, error => {
                 console.log("ERROR: ", error);
@@ -178,17 +184,17 @@ export class MyPagePage {
         modal.present();
 
     };
-public signup(){
+    public signup() {
 
-}
+    }
 
-  public test(){
-    let data= this.backend.mockfb();
+    public test() {
+        let data = this.backend.mockfb();
 
-    //alert(JSON.stringify(data));
-    this.navCtrl.push(PersonalPage,data);
+        //alert(JSON.stringify(data));
+        this.navCtrl.push(PersonalPage, data);
 
-  }
+    }
 
 
 }

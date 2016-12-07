@@ -24,6 +24,7 @@ import { MapAutoCompleatePage } from '../pages/map-auto-compleate/map-auto-compl
 import { ButtonchoosePage } from '../pages/buttonchoose/buttonchoose';
 import { PersonalPage} from '../pages/personal/personal';
 import { AgmCoreModule } from "angular2-google-maps/core";
+import { HttpModule, JsonpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,8 @@ import { AgmCoreModule } from "angular2-google-maps/core";
     PersonalPage
   ],
   imports: [
+     HttpModule,
+        JsonpModule,
       AgmCoreModule.forRoot({
           apiKey: "AIzaSyBmbRGUuc0yB4vKbxsW8BUr4hZ546opppM",
           libraries: ["places"]
