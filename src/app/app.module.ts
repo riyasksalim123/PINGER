@@ -25,7 +25,8 @@ import { ButtonchoosePage } from '../pages/buttonchoose/buttonchoose';
 import { PersonalPage} from '../pages/personal/personal';
 import { AgmCoreModule } from "angular2-google-maps/core";
 import { HttpModule, JsonpModule } from '@angular/http';
-
+import { HelperServices } from '../providers/helper';
+// import {  NavController } from 'ionic-angular';
 @NgModule({
   declarations: [
     ConferenceApp,
@@ -77,6 +78,6 @@ import { HttpModule, JsonpModule } from '@angular/http';
       ButtonchoosePage,
     PersonalPage
   ],
-  providers: [ConferenceData, UserData, Storage, Backendservice]
+  providers: [ConferenceData,Storage, UserData, Backendservice,HelperServices]
 })
 export class AppModule {}
