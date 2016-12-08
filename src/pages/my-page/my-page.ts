@@ -93,6 +93,10 @@ export class MyPagePage {
         this.helper.goToOtherPage(PersonalPage,mockdata);
     }
 
+    public signup(){
+        
+    }
+
 
 }
 

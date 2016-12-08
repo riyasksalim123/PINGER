@@ -59,9 +59,9 @@ this.helper.goToOtherPage(SpeakerListPage);
     // this.navCtrl.push(SpeakerListPage);
 
   }
-  // public updateSchedule(){
+  public updateSchedule(){
 
-  // }
+  }
 
 
 }
