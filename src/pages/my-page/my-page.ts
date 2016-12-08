@@ -18,8 +18,6 @@ declare var FB;
     templateUrl: 'my-page.html',
     providers: [WikipediaService,HelperServices]
 })
-
-
 export class MyPagePage {
     private data: any;
     public tocken: any;
@@ -87,17 +85,13 @@ export class MyPagePage {
        console.log("fd");
          this.helper.goToOtherPage(ButtonchoosePage,"");
     };
-  
     public test() {
         let mockdata = this.backend.mockfb();
         this.helper.goToOtherPage(PersonalPage,mockdata);
     }
-
     public signup(){
 
-        
+
     }
-
-
 }
 

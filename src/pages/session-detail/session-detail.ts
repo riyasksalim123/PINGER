@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavParams } from 'ionic-angular';
-
+import { Backendservice } from '../../providers/backendservice';
 
 @Component({
   selector: 'page-session-detail',
@@ -9,10 +9,20 @@ import { NavParams } from 'ionic-angular';
 })
 export class SessionDetailPage {
   session: any;
+  public results:any;
 
-  constructor(public navParams: NavParams) {
+  constructor(public navParams: NavParams, public backend: Backendservice) {
       this.session = navParams.data;
-      // alert(JSON.stringify(this.session));
-      // console.log(JSON.stringify(this.session));
+      alert(this.session);
+      this.flickr("coimbatore");
   }
+
+public flickr(name){
+              let url = "http://api.flickr.com/services/feeds/photos_public.gne?tags="+ name+"&format=json&jsoncallback=?";
+            this.backend.load(url).then(data => {
+                this.results=data;
+                console.log(this.results.items);
+            });
+}
+    
 }
