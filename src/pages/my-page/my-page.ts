@@ -94,6 +94,7 @@ export class MyPagePage {
     }
 
     public signup(){
+
         
     }
 
