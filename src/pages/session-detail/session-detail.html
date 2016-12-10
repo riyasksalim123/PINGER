@@ -1,11 +1,11 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Session</ion-title>
+    <ion-title>{{session.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h1>{{session.name}}</h1>
+  <!--<h1>{{session.name}}</h1>
 
     <p>{{session.vicinity}}</p>
  <div *ngIf="session.opening_hours.open_now !== 'undefined'">
@@ -21,5 +21,27 @@
     rating
   <p>{{session.rating}}</p>
     catogery 
-    <p>{{session.types[0]}}</p>
+    <p>{{session.types[0]}}</p>-->
+
+
+<ion-card>
+  <img src="http://www.havredegracemd.com/wp-content/uploads/2014/05/Tydings-Park-.jpg"/>
+  <ion-card-content style="background-color:grey">
+    <ion-card-title>
+   {{session.name}}
+      </ion-card-title>
+    <span *ngIf="session.opening_hours.open_now !== 'undefined'">
+    <p *ngIf="session.opening_hours.open_now === true">
+         open now
+     </p>
+     <p *ngIf="session.opening_hours.open_now === false">
+         closed now
+     </p>
+      <p>rating  {{session.rating}}</p>
+       <p>catogery  {{session.types[0]}}</p>
+    </span>
+    
+  </ion-card-content>
+</ion-card>
+
 </ion-content>

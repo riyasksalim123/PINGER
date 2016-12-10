@@ -1,0 +1,102 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--<ion-header>
+
+  <ion-navbar>
+    <ion-title>ProfilePage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+</ion-content>-->
+<!--<style media="screen">
+    .plainText {
+        text-decoration: none;
+    }
+</style>
+
+<ion-navbar *navbar>
+    <ion-title>
+        Profile App
+    </ion-title>
+</ion-navbar>
+
+<ion-content class="home">
+    <ion-card class="text-center">
+        <img style="width:10%" src="http://www.aspirehire.co.uk/aspirehire-co-uk/_img/profile.svg"/>
+        <ion-card-content>
+            <ion-card-title>
+               {{mydata.name}}
+            </ion-card-title>
+            <p>
+               {{mydata.gender}}
+            </p>
+              <p>{{mydata.hometown.name}}</p>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            Contact Detail
+        </ion-card-header>
+        <ion-card-content>
+            <!-- Hello World -->
+        <!--</ion-card-content>
+        <ion-list>
+            <button ion-item>
+                <ion-icon name="mail" item-left></ion-icon>
+                <a class="plainText" href="mailto:smkamranqadri@yahoo.com">smkamranqadri@yahoo.com</a>
+            </button>
+
+            <button ion-item>
+                <ion-icon name="skype" ios="logo-skype" md="logo-skype" item-left></ion-icon>
+                <a class="plainText" href="skype:smkamranqadri">smkamranqadri</a>
+            </button>
+
+            <button ion-item>
+                <ion-icon name="call" item-left></ion-icon>
+                <a class="plainText" href="tel:+923008203588">+923008203588</a>
+            </button>
+
+            <button ion-item>
+                <ion-icon name="linkedin" ios="logo-linkedin" md="logo-linkedin" item-left></ion-icon>
+                <a class="plainText" href="linkedin:smkamranqadri">LinkedIn</a>
+            </button>
+
+        </ion-list>
+    </ion-card>
+</ion-content>-->
+
+
+
+
+ <ion-content class="card-background-page">
+
+  <!--<ion-card>
+    <img src="http://www.aspirehire.co.uk/aspirehire-co-uk/_img/profile.svg"/>
+    <div class="card-title"> {{mydata.name}}</div>
+    <div class="card-subtitle">  {{mydata.gender}}</div>
+     <p>{{mydata.hometown.name}}</p>
+  </ion-card>-->
+<ion-card style="background-color: gray;
+    box-shadow: 10px 10px 10px;">
+    <img  src="http://www.aspirehire.co.uk/aspirehire-co-uk/_img/profile.svg"/>
+  <ion-card-content>
+    <ion-card-title>
+    {{mydata.name}}
+      </ion-card-title>
+    <p>
+     {{mydata.gender}} {{relationship_status}}
+    </p>
+    <p>{{mydata.hometown.name}}</p>
+  </ion-card-content>
+</ion-card>
+  <button ion-button full color="danger" (click)="continue()">continue</button>
+</ion-content>

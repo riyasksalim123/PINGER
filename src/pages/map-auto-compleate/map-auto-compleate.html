@@ -38,12 +38,15 @@
                 <input style="width: 100%;height: 40px;" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
             </div>
 
-            <sebm-google-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+            <sebm-google-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
                 <sebm-google-map-marker [latitude]="latitude" [longitude]="longitude"></sebm-google-map-marker>
             </sebm-google-map>
 
             <ion-item *ngIf="poibutton" color="dark">
-                <button ion-button full color="danger" (click)="showpoi()">show poi</button>
+                <button ion-button full color="danger" (click)="showpoi()">show interesting places near {{currentPlace}}</button>
+            </ion-item>
+             <ion-item *ngIf="poibutton" color="dark">
+                <button ion-button full color="danger" (click)="showuserInterests()">show user interests</button>
             </ion-item>
         </div>
     </div>

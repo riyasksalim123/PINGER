@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController ,NavParams} from 'ionic-angular';
 
-/*
-  Generated class for the Personal page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 
 
 @Component({
@@ -20,7 +15,7 @@ export class PersonalPage {
 
     this.mydata = this.navParams.data;
     console.log(this.mydata);
-   // alert(JSON.stringify(this.mydata));
+  
 
   }
 

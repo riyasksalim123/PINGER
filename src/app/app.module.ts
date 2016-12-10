@@ -24,7 +24,10 @@ import { MapAutoCompleatePage } from '../pages/map-auto-compleate/map-auto-compl
 import { ButtonchoosePage } from '../pages/buttonchoose/buttonchoose';
 import { PersonalPage} from '../pages/personal/personal';
 import { AgmCoreModule } from "angular2-google-maps/core";
-
+import { HttpModule, JsonpModule } from '@angular/http';
+import { HelperServices } from '../providers/helper';
+import { ProfilePagePage } from '../pages/profile-page/profile-page';
+// import {  NavController } from 'ionic-angular';
 @NgModule({
   declarations: [
     ConferenceApp,
@@ -44,9 +47,12 @@ import { AgmCoreModule } from "angular2-google-maps/core";
     MyPagePage,
       MapAutoCompleatePage,
       ButtonchoosePage,
-    PersonalPage
+    PersonalPage,
+    ProfilePagePage
   ],
   imports: [
+     HttpModule,
+        JsonpModule,
       AgmCoreModule.forRoot({
           apiKey: "AIzaSyBmbRGUuc0yB4vKbxsW8BUr4hZ546opppM",
           libraries: ["places"]
@@ -72,8 +78,9 @@ import { AgmCoreModule } from "angular2-google-maps/core";
     MyPagePage,
       MapAutoCompleatePage,
       ButtonchoosePage,
-    PersonalPage
+    PersonalPage,
+    ProfilePagePage
   ],
-  providers: [ConferenceData, UserData, Storage, Backendservice]
+  providers: [ConferenceData,Storage, UserData, Backendservice,HelperServices]
 })
 export class AppModule {}

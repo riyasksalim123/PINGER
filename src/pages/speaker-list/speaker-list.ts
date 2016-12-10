@@ -48,10 +48,10 @@ export class SpeakerListPage {
         {
           text: 'Copy Link',
           handler: () => {
-            console.log('Copy link clicked on https://twitter.com/' + speaker.twitter);
-            if (window['cordova'] && window['cordova'].plugins.clipboard) {
-              window['cordova'].plugins.clipboard.copy('https://twitter.com/' + speaker.twitter);
-            }
+            // console.log('Copy link clicked on https://twitter.com/' + speaker.twitter);
+            // if (window['cordova'] && window['cordova'].plugins.clipboard) {
+            //   window['cordova'].plugins.clipboard.copy('https://twitter.com/' + speaker.twitter);
+            // }
           }
         },
         {
@@ -74,29 +74,29 @@ export class SpeakerListPage {
   }
 
   openContact(speaker) {
-    let mode = this.config.get('mode');
+    // let mode = this.config.get('mode');
 
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Contact with ' + speaker.name,
-      buttons: [
-        {
-          text: `Email ( ${speaker.email} )`,
-          icon: mode !== 'ios' ? 'mail' : null,
-          handler: () => {
-            window.open('mailto:' + speaker.email);
-          }
-        },
-        {
-          text: `Call ( ${speaker.phone} )`,
-          icon: mode !== 'ios' ? 'call' : null,
-          handler: () => {
-            window.open('tel:' + speaker.phone);
-          }
-        }
-      ]
-    });
+    // let actionSheet = this.actionSheetCtrl.create({
+    //   title: 'Contact with ' + speaker.name,
+    //   buttons: [
+    //     {
+    //       text: `Email ( ${speaker.email} )`,
+    //       icon: mode !== 'ios' ? 'mail' : null,
+    //       handler: () => {
+    //         window.open('mailto:' + speaker.email);
+    //       }
+    //     },
+    //     {
+    //       text: `Call ( ${speaker.phone} )`,
+    //       icon: mode !== 'ios' ? 'call' : null,
+    //       handler: () => {
+    //         window.open('tel:' + speaker.phone);
+    //       }
+    //     }
+    //   ]
+    // });
 
-    actionSheet.present();
+    // actionSheet.present();
   }
 
   public getfbresults() {

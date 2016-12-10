@@ -9,11 +9,14 @@ import {TextToSpeech} from 'ionic-native';
 import {SpeakerListPage} from '../speaker-list/speaker-list';
 import {Backendservice} from '../../providers/backendservice';
 import {SchedulePage} from '../schedule/schedule';
+import { HelperServices } from '../../providers/helper';
+import {PersonalPage} from '../personal/personal';
 declare var google: any;
 
 @Component({
   selector: 'map-auto',
-  templateUrl: "map-auto-compleate.html"
+  templateUrl: "map-auto-compleate.html",
+  providers:[HelperServices]
 })
 export class MapAutoCompleatePage implements OnInit {
 
@@ -30,13 +33,14 @@ export class MapAutoCompleatePage implements OnInit {
   public searchElementRef: ElementRef;
   public PoiData: any
 
-
+public currentPlace:any;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public backend: Backendservice,
               public view: ViewController,
               private mapsAPILoader: MapsAPILoader,
               private toastCtrl: ToastController,
+              private helper:HelperServices,
               public http: Http) {
     this.decition = this.navParams.data;
    // this.title=this.decition== "current" ? "Your current location" : "Please select the manual location";
@@ -644,7 +648,7 @@ export class MapAutoCompleatePage implements OnInit {
       autocomplete.addListener("place_changed", () => {
         this.latitude = autocomplete.getPlace().geometry.location.lat();
         this.longitude = autocomplete.getPlace().geometry.location.lng();
-        this.toast("you selected ");
+        // this.helper.showToast("you selected ");
         this.locationset(this.latitude, this.longitude);
       });
     });
@@ -663,8 +667,9 @@ export class MapAutoCompleatePage implements OnInit {
 
     let url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + "&sensor=true'";
     this.backend.load(url).then(data => {
-      this.speak("you selected " + data.results[0].address_components[2].long_name + " .");
-      this.toast("you selected " + data.results[0].formatted_address + " .");
+      this.helper.speak("you selected " + data.results[0].address_components[2].long_name + " .");
+      this.currentPlace=data.results[0].formatted_address;
+     this.helper.showToast("you selected " + data.results[0].formatted_address + " .");
       console.log(data.results[0].address_components[2].long_name);
       this.getinterest(lat, long);
 
@@ -713,21 +718,27 @@ export class MapAutoCompleatePage implements OnInit {
       });
     }
   }
-  public speak(text: string) {
-    TextToSpeech.speak(text)
-      .then(() => console.log('Success'))
-      .catch((reason: any) => console.log(reason));
-  }
-  public toast(text: string) {
-    let toast = this.toastCtrl.create({
-      message: text,
-      duration: 10000,
-      position: 'top'
-    });
-    toast.present();
-  }
+  // public speak(text: string) {
+  //   TextToSpeech.speak(text)
+  //     .then(() => console.log('Success'))
+  //     .catch((reason: any) => console.log(reason));
+  // }
+  // public toast(text: string) {
+  //   let toast = this.toastCtrl.create({
+  //     message: text,
+  //     duration: 10000,
+  //     position: 'top'
+  //   });
+  //   toast.present();
+  // }
   public showpoi() {
     this.navCtrl.push(SchedulePage, this.array);
+  }
+  public showuserInterests(){
+
+     let mockdata = this.backend.mockfb();
+     this.navCtrl.push(PersonalPage, mockdata);
+
   }
   public dismiss() {
     this.view.dismiss();
