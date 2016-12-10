@@ -11,9 +11,12 @@ import {Backendservice} from '../../providers/backendservice';
 import {SchedulePage} from '../schedule/schedule';
 import { HelperServices } from '../../providers/helper';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {PersonalPage} from '../personal/personal';
 =======
 >>>>>>> 5e2f11552b7c2027c41f41748fdbfe46adf87297
+=======
+>>>>>>> origin/master
 declare var google: any;
 
 @Component({
@@ -652,10 +655,14 @@ public currentPlace:any;
         this.latitude = autocomplete.getPlace().geometry.location.lat();
         this.longitude = autocomplete.getPlace().geometry.location.lng();
 <<<<<<< HEAD
+<<<<<<< HEAD
         // this.helper.showToast("you selected ");
 =======
         this.helper.showToast("you selected ");
 >>>>>>> 5e2f11552b7c2027c41f41748fdbfe46adf87297
+=======
+        this.helper.showToast("you selected ");
+>>>>>>> origin/master
         this.locationset(this.latitude, this.longitude);
       });
     });
@@ -676,9 +683,12 @@ public currentPlace:any;
     this.backend.load(url).then(data => {
       this.helper.speak("you selected " + data.results[0].address_components[2].long_name + " .");
 <<<<<<< HEAD
+<<<<<<< HEAD
       this.currentPlace=data.results[0].formatted_address;
 =======
 >>>>>>> 5e2f11552b7c2027c41f41748fdbfe46adf87297
+=======
+>>>>>>> origin/master
      this.helper.showToast("you selected " + data.results[0].formatted_address + " .");
       console.log(data.results[0].address_components[2].long_name);
       this.getinterest(lat, long);

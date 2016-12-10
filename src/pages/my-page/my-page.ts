@@ -9,8 +9,10 @@ import { PersonalPage } from '../personal/personal';
 import { WikipediaService } from '../../providers/wikiService';
 import { HelperServices } from '../../providers/helper';
 import {  NavController } from 'ionic-angular';
+
 import { ProfilePagePage } from '../profile-page/profile-page';
 // import {FacebookService, FacebookLoginResponse,FacebookInitParams} from 'ng2-facebook-sdk/dist';
+
 
 
 declare var window;
@@ -37,10 +39,12 @@ export class MyPagePage {
         public backend: Backendservice,
         public platform: Platform,
 
+
         public wiki: WikipediaService)
     {
         this.test();
  
+
     }
 
 
@@ -87,7 +91,7 @@ export class MyPagePage {
 
     }
     public redirecttofb() {
-  
+
          this.helper.goToOtherPage(ButtonchoosePage,"");
     };
     public test() {

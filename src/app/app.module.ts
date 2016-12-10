@@ -27,9 +27,12 @@ import { AgmCoreModule } from "angular2-google-maps/core";
 import { HttpModule, JsonpModule } from '@angular/http';
 import { HelperServices } from '../providers/helper';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ProfilePagePage } from '../pages/profile-page/profile-page';
 =======
 >>>>>>> 5e2f11552b7c2027c41f41748fdbfe46adf87297
+=======
+>>>>>>> origin/master
 // import {  NavController } from 'ionic-angular';
 @NgModule({
   declarations: [
