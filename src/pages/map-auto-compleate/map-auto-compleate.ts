@@ -10,7 +10,10 @@ import {SpeakerListPage} from '../speaker-list/speaker-list';
 import {Backendservice} from '../../providers/backendservice';
 import {SchedulePage} from '../schedule/schedule';
 import { HelperServices } from '../../providers/helper';
+<<<<<<< HEAD
 import {PersonalPage} from '../personal/personal';
+=======
+>>>>>>> 5e2f11552b7c2027c41f41748fdbfe46adf87297
 declare var google: any;
 
 @Component({
@@ -648,7 +651,11 @@ public currentPlace:any;
       autocomplete.addListener("place_changed", () => {
         this.latitude = autocomplete.getPlace().geometry.location.lat();
         this.longitude = autocomplete.getPlace().geometry.location.lng();
+<<<<<<< HEAD
         // this.helper.showToast("you selected ");
+=======
+        this.helper.showToast("you selected ");
+>>>>>>> 5e2f11552b7c2027c41f41748fdbfe46adf87297
         this.locationset(this.latitude, this.longitude);
       });
     });
@@ -668,7 +675,10 @@ public currentPlace:any;
     let url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + "&sensor=true'";
     this.backend.load(url).then(data => {
       this.helper.speak("you selected " + data.results[0].address_components[2].long_name + " .");
+<<<<<<< HEAD
       this.currentPlace=data.results[0].formatted_address;
+=======
+>>>>>>> 5e2f11552b7c2027c41f41748fdbfe46adf87297
      this.helper.showToast("you selected " + data.results[0].formatted_address + " .");
       console.log(data.results[0].address_components[2].long_name);
       this.getinterest(lat, long);

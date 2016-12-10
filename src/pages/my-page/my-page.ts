@@ -12,6 +12,7 @@ import {  NavController } from 'ionic-angular';
 import { ProfilePagePage } from '../profile-page/profile-page';
 // import {FacebookService, FacebookLoginResponse,FacebookInitParams} from 'ng2-facebook-sdk/dist';
 
+
 declare var window;
 declare var google: any;
 declare var FB;
@@ -35,10 +36,11 @@ export class MyPagePage {
     constructor(private helper:HelperServices,
         public backend: Backendservice,
         public platform: Platform,
+
         public wiki: WikipediaService)
     {
         this.test();
-          // console.log(this.wiki.search("kaloor"));
+ 
     }
 
 
@@ -85,14 +87,13 @@ export class MyPagePage {
 
     }
     public redirecttofb() {
-       // this.helper.modalRedirect(ButtonchoosePage);
-      
+  
          this.helper.goToOtherPage(ButtonchoosePage,"");
     };
     public test() {
         let mockdata = this.backend.mockfb();
-        // this.helper.goToOtherPage(PersonalPage,mockdata);
-        this.helper.goToOtherPage(ProfilePagePage,mockdata);
+
+        this.helper.goToOtherPage(PersonalPage,mockdata);
 
     }
     public signup(){

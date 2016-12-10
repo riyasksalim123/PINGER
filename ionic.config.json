@@ -1,6 +1,6 @@
 {
   "name": "ionic-conference-app",
-  "app_id": "",
+  "app_id": "com.ionic.pinn",
   "typescript": true,
   "v2": true
 }
